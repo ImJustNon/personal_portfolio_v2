@@ -1,25 +1,12 @@
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+import { Container, VStack, Box } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
 
-function Home(){
+function Home({ language }){
+    
     return (
-        <div className="App">
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <CircularProgress isIndeterminate color='green.300' />
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-            Learn React
-            </a>
-        </header>
-        </div>
+        <h1 className="text-5xl">{language === "en" ? "Home" : "หน้าหลัก"}</h1>
     );
 }
 
