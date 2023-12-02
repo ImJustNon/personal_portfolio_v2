@@ -7,24 +7,13 @@ import NotFound from './pages/NotFound';
 import Controller from './routes/controller';
 import { extendTheme } from "@chakra-ui/react"
 import { ComponentStyleConfig, CSSReset } from '@chakra-ui/react'
+import Particle from "./components/Particle"
 
 function App() {
-	const style = {
-		// style object for base or default style
-		baseStyle: {},
-		// styles for different sizes ("sm", "md", "lg")
-		sizes: {},
-		// styles for different visual variants ("outline", "solid")
-		variants: {},
-		// default values for 'size', 'variant' and 'colorScheme'
-		defaultProps: {
-		  size: '',
-		  variant: '',
-		  colorScheme: '',
-		},
-	}
   	return (
-		<ChakraProvider theme={style}>
+		<ChakraProvider>
+			<div className='set-bg'></div>
+			<Particle />
 			<Controller />
 		</ChakraProvider>
   	);

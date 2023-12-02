@@ -8,7 +8,7 @@ function AppLayout({ children }){
 
     return(
         <>
-            <Navbar />
+            <Navbar language={language} />
 
             {React.Children.map(children, (child) =>{
                 return React.cloneElement(child, { 
