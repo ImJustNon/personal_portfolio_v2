@@ -21,34 +21,34 @@ function Navbar({language}){
 
     return(
         <>
-            <div className="navbar fixed text-white z-10" style={{backgroundColor: "rgba(0, 0, 0, 0.7)"}}>
+            <div className="navbar fixed text-black z-10 bg-slate-200 bg-opacity-10 shadow-lg" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
                         <Link to={`/${language}`} className="text-xl ml-5">{"< NOr._Nor />"}</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <div className="menu menu-horizontal px-1 space-x-3">
-                            <Link to={`/${language}/`} className="btn btn-sm font-normal btn-ghost text-white" >
+                            <Link to={`/${language}/`} className="btn btn-sm font-normal btn-ghost text-black" >
                                 <i className="fa-solid fa-house"></i>
                                 {language === "en" ? "Home" : "หน้าหลัก"}
                             </Link>
-                            <Link to={`/${language}/personal-history`} className="btn btn-sm font-normal btn-ghost text-white" >
+                            <Link to={`/${language}/personal-history`} className="btn btn-sm font-normal btn-ghost text-black" >
                                 <i className="fa-solid fa-folder"></i>
                                 {language === "en" ? "Personal History" : "ประวัติส่วนตัว"}
                             </Link>
-                            <Link to={`/${language}/certificates`} className="btn btn-sm font-normal btn-ghost text-white" >
+                            <Link to={`/${language}/certificates`} className="btn btn-sm font-normal btn-ghost text-black" >
                                 <i className="fa-solid fa-trophy"></i>
                                 {language === "en" ? "Certificates" : "เกียรติบัตร"}
                             </Link>
-                            <Link to={`/${language}/activities`} className="btn btn-sm font-normal btn-ghost text-white" >
+                            <Link to={`/${language}/activities`} className="btn btn-sm font-normal btn-ghost text-black" >
                                 <i className="fa-solid fa-medal"></i>
                                 {language === "en" ? "Activities" : "กิจกรรม"}
                             </Link>
-                            <Link to={`/${language}/projects`} className="btn btn-sm font-normal btn-ghost text-white" >
+                            <Link to={`/${language}/projects`} className="btn btn-sm font-normal btn-ghost text-black" >
                                 <i className="fa-solid fa-code"></i>
                                 {language === "en" ? "Projects" : "โปรเจค"}
                             </Link>
-                            <Link to={`/${language}/socials`} className="btn btn-sm font-normal btn-ghost text-white" >
+                            <Link to={`/${language}/socials`} className="btn btn-sm font-normal btn-ghost text-black" >
                                 <i className="fa-solid fa-share-from-square"></i>
                                 {language === "en" ? "Socials" : "โซเชียล"}
                             </Link>
@@ -56,7 +56,7 @@ function Navbar({language}){
                     </div>
                     <div className="navbar-end text-end">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost text">
+                            <div tabIndex={0} role="button" className="btn btn-ghost text-black">
                                 {
                                     language === "en" ?
                                         <>
@@ -70,7 +70,7 @@ function Navbar({language}){
                                         </>
                                 }
                             </div>
-                            <div tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-md w-max text-white space-y-3" style={{backgroundColor: "rgba(0, 0, 0, 0.7)"}} >
+                            <div tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow rounded-md w-max text-white space-y-3" style={{backgroundColor: "rgba(0, 0, 0, 0.7)"}} >
                                 <button className="text-left" onClick={() => HandleToggleLanguage("en")}>
                                     <img alt="en_image" src={enImage} className="h-3.5 w-3.5 object-cover inline rounded-full mr-2" />English (US)
                                 </button>

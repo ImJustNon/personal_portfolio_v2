@@ -4,7 +4,8 @@ import React from "react";
 // import '../App.css'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-
+import Footer from "../components/Footer"
+ 
 function AppLayout({ children }){
     const { language } = useParams();
     const { pathname } = useLocation();
@@ -42,6 +43,8 @@ function AppLayout({ children }){
                     })}
                 </motion.div>
 			</AnimatePresence>
+
+            <Footer />
         </>
     );
 }
