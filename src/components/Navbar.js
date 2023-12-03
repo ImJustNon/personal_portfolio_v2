@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Input, Button } from "@chakra-ui/react";
 import React from "react";
@@ -19,6 +19,8 @@ function Navbar({language}){
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+
+
     return(
         <>
             <div className="navbar fixed text-black z-10 bg-slate-200 bg-opacity-10 shadow-lg" >
@@ -28,27 +30,45 @@ function Navbar({language}){
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <div className="menu menu-horizontal px-1 space-x-3">
-                            <Link to={`/${language}/`} className="btn btn-sm font-normal btn-ghost text-black" >
+                            <Link 
+                                to={`/${language}/`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.length <= 4 ? "btn-active" : ""}`} 
+                            >
                                 <i className="fa-solid fa-house"></i>
                                 {language === "en" ? "Home" : "หน้าหลัก"}
                             </Link>
-                            <Link to={`/${language}/personal-history`} className="btn btn-sm font-normal btn-ghost text-black" >
+                            <Link 
+                                to={`/${language}/personal-history`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/personal-history") ? "btn-active" : ""}`} 
+                            >
                                 <i className="fa-solid fa-folder"></i>
                                 {language === "en" ? "Personal History" : "ประวัติส่วนตัว"}
                             </Link>
-                            <Link to={`/${language}/certificates`} className="btn btn-sm font-normal btn-ghost text-black" >
+                            <Link 
+                                to={`/${language}/certificates`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/certificates") ? "btn-active" : ""}`} 
+                            >
                                 <i className="fa-solid fa-trophy"></i>
                                 {language === "en" ? "Certificates" : "เกียรติบัตร"}
                             </Link>
-                            <Link to={`/${language}/activities`} className="btn btn-sm font-normal btn-ghost text-black" >
+                            <Link 
+                                to={`/${language}/activities`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/activities") ? "btn-active" : ""}`} 
+                            >
                                 <i className="fa-solid fa-medal"></i>
                                 {language === "en" ? "Activities" : "กิจกรรม"}
                             </Link>
-                            <Link to={`/${language}/projects`} className="btn btn-sm font-normal btn-ghost text-black" >
+                            <Link 
+                                to={`/${language}/projects`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/projects") ? "btn-active" : ""}`} 
+                            >
                                 <i className="fa-solid fa-code"></i>
                                 {language === "en" ? "Projects" : "โปรเจค"}
                             </Link>
-                            <Link to={`/${language}/socials`} className="btn btn-sm font-normal btn-ghost text-black" >
+                            <Link 
+                                to={`/${language}/socials`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/socials") ? "btn-active" : ""}`} 
+                            >
                                 <i className="fa-solid fa-share-from-square"></i>
                                 {language === "en" ? "Socials" : "โซเชียล"}
                             </Link>
