@@ -14,7 +14,7 @@ function AppLayout({ children }){
         <>
             <Navbar language={language} />
 
-            <div className="pt-16 text-white"></div>
+            <div className="pt-12"></div>
 
             <AnimatePresence wait>
                 <motion.div 
