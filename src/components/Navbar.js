@@ -26,7 +26,7 @@ function Navbar({language}){
             <div className="navbar fixed text-black z-10 bg-slate-200 bg-opacity-10 shadow-lg" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
-                        <Link to={`/${language}`} className="text-xl ml-5">{"< NOr._Nor />"}</Link>
+                        <Link to={`/${language}`} className="text-xl ml-5 font-bold">{"<NOr._Nor/>"}</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <div className="menu menu-horizontal px-1 space-x-3">
