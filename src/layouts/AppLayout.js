@@ -5,14 +5,26 @@ import React from "react";
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import Footer from "../components/Footer"
- 
+import Particle from "../components/Particle";
+import { useState, useEffect } from "react";
+
 function AppLayout({ children }){
     const { language } = useParams();
     const { pathname } = useLocation();
+    
+
+    // enable-disable Particles
+    const [enableParticlesState, setEnableParticlesState] = useState(false);
+	useEffect(() =>{
+		const enableParticles = localStorage.getItem("config_particles");
+		setEnableParticlesState(enableParticles === "true" ? true : false);
+	}, []);
 
 
     return(
         <>
+            {enableParticlesState ? <Particle /> : <></>}
+            
             <Navbar language={language} />
 
             <div className="pt-16"></div>

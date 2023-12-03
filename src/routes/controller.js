@@ -9,11 +9,12 @@ import Socials from '../pages/Socials';
 import { useParams, useNavigate } from 'react-router-dom';
 import AppLayout from "../layouts/AppLayout";
 import { useEffect } from 'react';
+import Settings from "../pages/Settings";
 
 function Controller(){
     const navigate = useNavigate();
 
-    const RedirectToHome = () =>{
+    function RedirectToHome(){
         useEffect(() =>{
             const checkLanguageSetting = localStorage.getItem("config_language");
             if(!checkLanguageSetting){
@@ -25,6 +26,7 @@ function Controller(){
 
         return (<></>);
     }
+
 
     return(
         <Routes>
@@ -79,6 +81,14 @@ function Controller(){
                 element={
                     <AppLayout>
                         <Socials />
+                    </AppLayout>
+                } 
+            />
+            <Route 
+                path={'/:language/settings'} 
+                element={
+                    <AppLayout >
+                        <Settings />
                     </AppLayout>
                 } 
             />

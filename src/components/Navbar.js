@@ -72,6 +72,12 @@ function Navbar({language}){
                                 <i className="fa-solid fa-share-from-square"></i>
                                 {language === "en" ? "Socials" : "โซเชียล"}
                             </Link>
+                            <Link 
+                                to={`/${language}/settings`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/settings") ? "btn-active" : ""}`} 
+                            >
+                                <i className="fa-solid fa-gear"></i>
+                            </Link>
                         </div>
                     </div>
                     <div className="navbar-end text-end">
@@ -152,7 +158,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                     <DrawerHeader>
                         <div className="text-left flex flex-row justify-around">
                             <div className="text-2xl">
-                                {language === "en" ? "< N a v i g a t i o n />" : "< เ ม นู />"} 
+                                {language === "en" ? "< Where Would You Like To Go? />" : "< อยากจะไปหน้าไหนดีล่ะ />"} 
                             </div>
                         </div>
                     </DrawerHeader>
@@ -224,10 +230,20 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                     </DrawerBody>
         
                     <DrawerFooter>
-                        <button className="btn btn-sm rounded-full" onClick={onClose}>
-                            <i className="fa-solid fa-x"></i> 
-                            {language === "en" ? "Close" : "ปิดเมนู"}
-                        </button>
+                        <div className="flex flex-row justify-between w-full">
+                            <div>
+                                <Link to={`/${language}/settings`} className="btn btn-sm rounded-full" >
+                                    <i className="fa-solid fa-gear"></i> 
+                                    {/* {language === "en" ? "Settings" : "ตั้งค่า"} */}
+                                </Link>
+                            </div>
+                            <div>
+                                <button className="btn btn-sm rounded-full" onClick={onClose}>
+                                    <i className="fa-solid fa-x"></i> 
+                                    {language === "en" ? "Close" : "ปิดเมนู"}
+                                </button>
+                            </div>
+                        </div>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
