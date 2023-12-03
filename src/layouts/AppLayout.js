@@ -13,6 +13,9 @@ function AppLayout({ children }){
     return(
         <>
             <Navbar language={language} />
+
+            <div className="pt-16 text-white"></div>
+
             <AnimatePresence wait>
                 <motion.div 
                     key={pathname}
@@ -31,7 +34,7 @@ function AppLayout({ children }){
                         },
                         exitState: {},
                     }}
-                >
+                >        
                     {React.Children.map(children, (child) =>{
                         return React.cloneElement(child, { 
                             language: language,

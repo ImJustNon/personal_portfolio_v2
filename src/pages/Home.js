@@ -6,7 +6,10 @@ import { useParams } from 'react-router-dom';
 function Home({ language }){
     
     return (
-        <h1 className="text-5xl">{language === "en" ? "Home" : "หน้าหลัก"}</h1>
+        <>
+        <h1 className="text-5xl pt-32 text-white">{language === "en" ? "Home" : "หน้าหลัก"}</h1>
+
+        </>
     );
 }
 
