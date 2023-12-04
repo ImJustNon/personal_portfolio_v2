@@ -10,6 +10,9 @@ export const config = {
         },
         github: {
             username: "imjustnon"
+        },
+        instagram: {
+            username: "not._non"
         }
     },
     data: {

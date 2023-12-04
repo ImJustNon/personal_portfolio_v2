@@ -17,6 +17,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
+    "axios": "^1.6.2",
     "framer-motion": "^10.16.5",
     "jsonwebtoken": "^9.0.2",
     "preline": "^2.0.2",
