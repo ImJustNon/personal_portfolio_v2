@@ -11,11 +11,11 @@ function PersonalHistory({ language }){
     const [personalInfoSchools, setPersonalInfoSchools] = useState([]);
     useEffect(() =>{
         fetch(`https://me.nonlnwza.xyz/api/get/personal-info?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
+            console.log(response);
             setPersonalInfoMyself(response.data.myself);
             setPersonalInfoDad(response.data.dad);
             setPersonalInfoMom(response.data.mom);
             setPersonalInfoSchools(response.data.school);
-            console.log(response.data.school);
         }); 
     }, []);
 
