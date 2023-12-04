@@ -15,7 +15,7 @@ function PersonalHistory({ language }){
             setPersonalInfoDad(response.data.dad);
             setPersonalInfoMom(response.data.mom);
             setPersonalInfoSchools(response.data.school);
-            // console.log(response.data.school);
+            console.log(response.data.school);
         }); 
     }, []);
 
