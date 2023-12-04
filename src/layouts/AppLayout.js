@@ -56,6 +56,8 @@ function AppLayout({ children }){
                 </motion.div>
 			</AnimatePresence>
 
+            {/* <div className="pb-16"></div> */}
+            
             <Footer />
         </>
     );

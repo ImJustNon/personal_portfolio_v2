@@ -68,6 +68,12 @@ export const config = {
                         iconClass: "fa-brands fa-spotify",
                         hoverClass: "btn btn-active btn-success mx-1 my-1 text-white",
                     },
+                    {
+                        name: "Instagram",
+                        url: "https://www.instagram.com/not._non/",
+                        iconClass: "fa-brands fa-instagram",
+                        hoverClass: "btn btn-active btn-secondary mx-1 my-1 text-white",
+                    },
                 ],
                 webPageButton: [
                     {
