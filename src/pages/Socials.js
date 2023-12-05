@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { config } from "../config/config";
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 function Socials({ language }){
 
