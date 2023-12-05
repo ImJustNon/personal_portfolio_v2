@@ -7,10 +7,17 @@ import { useLocation } from 'react-router-dom';
 import Footer from "../components/Footer"
 import Particle from "../components/Particle";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 function AppLayout({ children }){
     const { language } = useParams();
     const { pathname } = useLocation();
+    
+    // translation
+    const { t, i18n } = useTranslation();
+    useEffect(() =>{
+        i18n.changeLanguage(language);
+    }, []);
     
 
     // enable-disable Particles

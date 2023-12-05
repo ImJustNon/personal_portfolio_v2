@@ -5,17 +5,26 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import enImage from "../assets/images/languages/en.jpg";
 import thImage from "../assets/images/languages/th.jpg";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom"
 
 function Navbar({language}){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // translation
+    const { t, i18n } = useTranslation();
+
+    const navigate = useNavigate();
+
     const { pathname } = useLocation();
     function HandleToggleLanguage(lang){
         if(pathname.startsWith(`/${lang}`)) return; // return if choose language same as current language
-
-        localStorage.setItem("config_language", lang); // save to localstorage
-        window.location.replace(pathname.startsWith("/en") ? pathname.replace("en", "th") : pathname.replace("th", "en")); // reload page with same page
+        // localStorage.setItem("config_language", lang); // save to localstorage
+        // window.location.replace(pathname.startsWith("/en") ? pathname.replace("en", "th") : pathname.replace("th", "en")); // reload page with same page
+        i18n.changeLanguage(lang);
+        navigate(pathname.startsWith("/en") ? pathname.replace("en", "th") : pathname.replace("th", "en"));
     }
+
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -26,7 +35,7 @@ function Navbar({language}){
             <div className="navbar fixed text-black z-10 bg-slate-200 bg-opacity-10 shadow-lg" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
-                        <Link to={`/${language}`} className="text-xl ml-5 font-bold">{"<NOr._Nor/>"}</Link>
+                        <Link to={`/${language}`} className="text-xl ml-5 font-bold">{t("<NOr._Nor/>")}</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <div className="menu menu-horizontal px-1 space-x-3">
@@ -35,42 +44,42 @@ function Navbar({language}){
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.length <= 4 ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-house"></i>
-                                {language === "en" ? "Home" : "หน้าหลัก"}
+                                {t("Home")}
                             </Link>
                             <Link 
                                 to={`/${language}/personal-history`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/personal-history") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-folder"></i>
-                                {language === "en" ? "Personal History" : "ประวัติส่วนตัว"}
+                                {t("Personal History")}
                             </Link>
                             <Link 
                                 to={`/${language}/certificates`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/certificates") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-trophy"></i>
-                                {language === "en" ? "Certificates" : "เกียรติบัตร"}
+                                {t("Certificates")}
                             </Link>
                             <Link 
                                 to={`/${language}/activities`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/activities") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-medal"></i>
-                                {language === "en" ? "Activities" : "กิจกรรม"}
+                                {t("Activities")}
                             </Link>
                             <Link 
                                 to={`/${language}/projects`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/projects") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-code"></i>
-                                {language === "en" ? "Projects" : "โปรเจค"}
+                                {t("Projects")}
                             </Link>
                             <Link 
                                 to={`/${language}/socials`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/socials") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-share-from-square"></i>
-                                {language === "en" ? "Socials" : "โซเชียล"}
+                                {t("Socials")}
                             </Link>
                             <Link 
                                 to={`/${language}/settings`} 
@@ -141,7 +150,9 @@ function Burger(){
 
 function MobileDrawer({isOpen, onClose, onOpen, language}) {
     const btnRef = React.useRef()
-  
+    // translation
+    const { t, i18n } = useTranslation();
+    
     return (
         <>
             <Drawer
@@ -158,7 +169,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                     <DrawerHeader>
                         <div className="text-left flex flex-row justify-around">
                             <div className="text-2xl">
-                                {language === "en" ? "< Where Would You Like To Go? />" : "< อยากจะไปหน้าไหนดีล่ะ />"} 
+                                {t("< Where Would You Like To Go? />")} 
                             </div>
                         </div>
                     </DrawerHeader>
@@ -172,7 +183,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                                         <i className="fa-solid fa-house"></i>
                                     </div>
                                     <div class="col-span-2 text-left">
-                                        {language === "en" ? "Home" : "หน้าหลัก"}
+                                        {t("Home")}
                                     </div>
                                 </div>
                             </Link>
@@ -182,7 +193,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                                         <i className="fa-solid fa-folder"></i>
                                     </div>
                                     <div class="col-span-2 text-left">
-                                        {language === "en" ? "Personal History" : "ประวัติส่วนตัว"}
+                                        {t("Personal History")}
                                     </div>
                                 </div>
                             </Link>
@@ -192,7 +203,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                                         <i className="fa-solid fa-trophy"></i>
                                     </div>
                                     <div class="col-span-2 text-left">
-                                        {language === "en" ? "Certificates" : "เกียรติบัตร"}
+                                        {t("Certificates")}
                                     </div>
                                 </div>
                             </Link>
@@ -202,7 +213,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                                         <i className="fa-solid fa-medal"></i>
                                     </div>
                                     <div class="col-span-2 text-left">
-                                        {language === "en" ? "Activities" : "กิจกรรม"}
+                                        {t("Activities")}
                                     </div>
                                 </div>
                             </Link>
@@ -212,7 +223,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                                         <i className="fa-solid fa-code"></i>
                                     </div>
                                     <div class="col-span-2 text-left">
-                                        {language === "en" ? "Projects" : "โปรเจค"}
+                                        {t("Projects")}
                                     </div>
                                 </div>
                             </Link>
@@ -222,7 +233,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                                         <i className="fa-solid fa-share-from-square"></i>
                                     </div>
                                     <div class="col-span-2 text-left">
-                                        {language === "en" ? "Socials" : "โซเชียล"}
+                                        {t("Socials")}
                                     </div>
                                 </div>
                             </Link>
@@ -240,7 +251,7 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                             <div>
                                 <button className="btn btn-sm rounded-full" onClick={onClose}>
                                     <i className="fa-solid fa-x"></i> 
-                                    {language === "en" ? "Close" : "ปิดเมนู"}
+                                    {t("Close")}
                                 </button>
                             </div>
                         </div>

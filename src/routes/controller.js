@@ -15,13 +15,13 @@ function Controller(){
     const navigate = useNavigate();
 
     function RedirectToHome(){
-        useEffect(() =>{
-            const checkLanguageSetting = localStorage.getItem("config_language");
-            if(!checkLanguageSetting){
-                localStorage.setItem("config_language", "en");
-            }
-            const getLanguageSetting = localStorage.getItem("config_language");
-            navigate(`/${getLanguageSetting}`);
+        useEffect(() =>{ 
+            // const checkLanguageSetting = localStorage.getItem("config_language");
+            // if(!checkLanguageSetting){
+            //     localStorage.setItem("config_language", "en");
+            // }
+            // const getLanguageSetting = localStorage.getItem("config_language");
+            navigate(`/en`);
         }, []);
 
         return (<></>);
