@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { config } from "../config/config";
+import { useTranslation } from "react-i18next";
 
 function Home({ language }){
     const { pathname } = useLocation();
@@ -14,6 +15,8 @@ function Home({ language }){
 	const [githubInfo, setGithubInfo] = useState({});
 	const [isLoaded, setIsLoaded] = useState(false);
 
+    // translation
+    const { t, i18n } = useTranslation();
 
 	useEffect(() =>{
 		fetch(`https://api.github.com/users/${config.api.github.username}`).then(response => response.json()).then(response =>{
@@ -31,15 +34,15 @@ function Home({ language }){
                     <div className="hero bg-white bg-opacity-40 rounded-2xl text-center md:text-start text-black">
                         <div className="hero-content flex-col md:flex-row">
                             {isLoaded ? 
-                                <div className="w-2/3 md:h-auto">
-                                    <img src={githubProfileURL} className="w-full rounded-lg shadow-2xl animate__animated animate__fadeIn" />
+                                <div className="w-2/3 md:h-auto md:w-1/3">
+                                    <img src={githubProfileURL} className="w-full rounded-lg shadow-2xl animate__animated animate__fadeIn md:w-44" />
                                 </div>
                                 :
-                                <div className="h-48 w-2/3 text-center flex justify-center md:h-52">
+                                <div className="h-48 w-2/3 text-center flex justify-center md:w-1/3 md:h-44">
                                     <span className="loading loading-spinner loading-lg"></span>
                                 </div>
                             }
-                            <div>
+                            <div className='w-full'>
                                 <h1 className={`text-2xl font-semibold `}>
                                     {isLoaded ? 
                                         <a className="animate__animated animate__fadeIn" href="https://github.com/ImJustNon" target="_blank">{`< ${githubProfileUserName} />`}</a>
@@ -49,8 +52,8 @@ function Home({ language }){
                                         </div>
                                     }
                                 </h1>
-                                <p className="py-3">I call myself a Dev. But I hate code. LOL.</p>
-                                <p className="py-3">Currently studying at the Vocational Certificate at the Science-Based Technology Vocational College (Chonburi). Information Technology branch.</p>
+                                <p className="py-3">{t("box_1_title")}</p>
+                                <p className="py-3">{t("box_1_description")}</p>
                             </div>
                         </div>
                     </div>
@@ -58,33 +61,33 @@ function Home({ language }){
 
                 <div className='mt-10 md:px-56'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-3xl font-semibold'>About Me</h1>
+                        <h1 className='text-center text-3xl font-semibold'>{t("About Me")}</h1>
                     </div>
                     <div className="mt-5 mx-auto hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 w-96 md:text-start md:w-auto">
                         <div className='flex flex-col md:flex-row justify-around w-full'>
                             <div className='text-black md:w-1/2'>
                                 <h1 className='text-xl text-center mb-3'>
                                     <i className="fa-solid fa-code"></i> 
-                                    | Dev. Stacks
+                                    | {t("Dev. Stacks")}
                                 </h1>
                                 <ul className='space-y-1'>
-                                    <li className="py-2 text-sm font-thin">▪ Programming languages: JavaScript, HTML, CSS, SQL, JSX, Python, C++, EJS </li>
-                                    <li className="py-2 text-sm font-thin">▪ Frameworks: Express.js, React.js, Node.js, Discord.js, Bootstrap, TailwindCSS</li>
-                                    <li className="py-2 text-sm font-thin">▪ Tools: Git</li>
-                                    <li className="py-2 text-sm font-thin">▪ IDEs: Visual Studio Code</li>
-                                    <li className="py-2 text-sm font-thin">▪ Etc: null</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Programming languages")} : JavaScript, HTML, CSS, SQL, JSX, Python, C++, EJS </li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Frameworks")} : Express.js, React.js, Node.js, Discord.js, Bootstrap, TailwindCSS</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Tools")} : Git</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("IDEs")} : Visual Studio Code</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Etc")} : null</li>
                                 </ul>
                             </div>
                             <div className='text-black mt-8 md:w-1/2 md:mt-0'>
                                 <h1 className='text-xl text-center mb-3'>
-                                    🥰 | Personal Information
+                                    🥰 | {t("Personal Information")}
                                 </h1>
                                 <ul className='space-y-1'>
-                                    <li className="py-2 text-sm font-thin">▪ Live in : Samut Prakan, Thailand</li>
-                                    <li className="py-2 text-sm font-thin">▪ Study At : Science-Based Technology Vocational College (Chonburi)</li>
-                                    <li className="py-2 text-sm font-thin">▪ Field of Study : Information Technology (IT)</li>
-                                    <li className="py-2 text-sm font-thin">▪ Hobbies: Listening to music, watching anime, coding, sleeping</li>
-                                    <li className="py-2 text-sm font-thin">▪ Fav Anime : 86, Spy X Family, Bloom into You, YourName ETC.</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Live in")}</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Study At")}</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Field of Study")}</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Hobbies")}</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Fav Anime")}</li>
                                 </ul>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import enImage from "../assets/images/languages/en.jpg";
 import thImage from "../assets/images/languages/th.jpg";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function Navbar({language}){
     const [isMenuOpen, setIsMenuOpen] = useState(false);

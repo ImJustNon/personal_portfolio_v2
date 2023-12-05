@@ -47,10 +47,12 @@ function AppLayout({ children }){
                     }}
                     variants={{
                         initialState: {
-                            opacity: 0, transform: "translateY(150px)",
+                            opacity: 0, 
+                            transform: "translateY(100px)",
                         },
                         animateState: {
-                            opacity: 1, transform: 0,
+                            opacity: 1, 
+                            transform: 0,
                         },
                         exitState: {},
                     }}
