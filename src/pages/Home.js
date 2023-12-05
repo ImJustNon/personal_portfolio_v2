@@ -27,7 +27,7 @@ function Home({ language }){
     return (
         <>
             <div className='container mx-auto'>
-                <div className='mt-10 mx-auto w-[20rem] md:w-[45rem] noselect'>
+                <div className='mt-10 mx-auto w-96 md:w-[45rem] noselect'>
                     <div className="hero bg-white bg-opacity-40 rounded-2xl text-center md:text-start text-black">
                         <div className="hero-content flex-col md:flex-row">
                             {isLoaded ? 

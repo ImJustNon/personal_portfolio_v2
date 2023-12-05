@@ -29,7 +29,7 @@ function Settings({ language }){
                 </div>
                 <div className="mt-14 flex flex-col justify-center space-y-5 md:flex-row md:space-y-0 md:space-x-5">
 
-                    <div className="card w-96 glass text-black mx-auto md:mx-0">
+                    <div className="card w-96 bg-white bg-opacity-40 text-black mx-auto md:mx-0">
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">
                                 {language === "en" ? "Enable Particles Background" : "เปิดใช้งานพื้นหลัก Particles"}
@@ -39,7 +39,7 @@ function Settings({ language }){
                             </div>
                         </div>
                     </div> 
-
+                    
                 </div>
             </div>
         </>

@@ -72,7 +72,7 @@ export const config = {
                         name: "Instagram",
                         url: "https://www.instagram.com/not._non/",
                         iconClass: "fa-brands fa-instagram",
-                        hoverClass: "btn btn-active btn-secondary mx-1 my-1 text-white",
+                        hoverClass: "btn btn-active btn-warning mx-1 my-1 text-white",
                     },
                 ],
                 webPageButton: [
