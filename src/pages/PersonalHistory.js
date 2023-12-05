@@ -36,7 +36,7 @@ function PersonalHistory({ language }){
                     </h1>
                 </div>
                 <div className="mt-14 mx-auto">
-                    <div className="grid grid-rows-1 grid-flow-row w-96 justify-center mx-auto md:space-x-10 md:grid-rows-3 md:grid-flow-col md:w-auto md:mx-0">
+                    <div className="grid grid-rows-1 grid-flow-row w-96 justify-center mx-auto md:gap-x-10 md:grid-rows-3 md:grid-flow-col md:w-auto md:mx-0">
 
 
                         <div className="row-span-3 hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 mb-5 md:max-w-xl">    
