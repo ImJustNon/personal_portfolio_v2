@@ -82,7 +82,7 @@ function Activities({ language }){
                     </Swiper>
                 </div>
 
-                <hr className='my-10 w-96 mx-auto' />
+                <hr className='my-14 w-96 mx-auto' />
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
