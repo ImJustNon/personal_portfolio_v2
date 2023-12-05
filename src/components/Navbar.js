@@ -3,8 +3,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Input, Button } from "@chakra-ui/react";
 import React from "react";
 import { useLocation } from "react-router-dom";
-import enImage from "../assets/images/language/en.jpg";
-import thImage from "../assets/images/language/th.jpg";
+import enImage from "../assets/images/languages/en.jpg";
+import thImage from "../assets/images/languages/th.jpg";
 
 function Navbar({language}){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
