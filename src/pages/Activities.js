@@ -88,7 +88,7 @@ function Activities({ language }){
                     <div className='mx-auto'>
                         <h1 className='text-center text-3xl font-semibold'>{language === "en" ? "Vocational Certificate 1st Years" : "ปวช. 1"}</h1>
                     </div>
-                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-5/6 xl:grid-cols-4'>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {activitiesData_VocationalCertificate.map((data, i) =>(
                             <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
@@ -115,7 +115,7 @@ function Activities({ language }){
                     <div className='mx-auto'>
                         <h1 className='text-center text-3xl font-semibold'>{language === "en" ? "Vocational Certificate 2st Years" : "ปวช. 2"}</h1>
                     </div>
-                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-5/6 xl:grid-cols-4'>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {activitiesData_VocationalCertificate_2.map((data, i) =>(
                             <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
