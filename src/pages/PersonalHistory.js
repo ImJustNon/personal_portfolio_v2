@@ -19,12 +19,19 @@ function PersonalHistory({ language }){
         }); 
     }, []);
 
-    // const [instagramProfilePicture, setInstagramProfilePicture] = useState("");
-    // useEffect(() =>{
-    //     fetch(`https://www.instagram.com/web/search/topsearch/?query=${config.api.instagram.username}`).then(response => response.json()).then(response =>{
-    //         console.log(response.users[0].user.profile_pic_url);
-    //     }); 
-    // }, []);
+
+    const [instagramProfilePic, setInstagramProfilePic] = useState(""); 
+    useEffect(() =>{
+        fetch(`https://instagram130.p.rapidapi.com/account-info?username=${config.api.instagram.username}`, {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': config.api.rapidapi.key,
+                'X-RapidAPI-Host': config.api.instagram.rapidapi.host,
+            },
+        }).then(response => response.json()).then(response =>{
+            setInstagramProfilePic(response.profile_pic_url_hd);
+        });
+    }, []); 
 
     return(
         <>
@@ -44,13 +51,13 @@ function PersonalHistory({ language }){
                                 <div className="w-48 mx-auto mb-10">
                                     <img className="mx-auto rounded-full border-solid border-white border-8" src={profilePicture} alt="Profile_pic" />
                                 </div>
-                                <h1 className='text-xl text-center font-bold mb-8'>
+                                <h1 className='text-2xl text-center font-bold mb-8'>
                                     ประวัติส่วนตัว
                                 </h1>
 
                                 <div className="grid grid-cols-2 gap-x-5 items-start mx-auto">
                                     {personalInfoMyself.map((info, i) =>(
-                                        <p key={i} className="py-2 text-sm font-thin">
+                                        <p key={i} className="py-2 text-lg font-thin">
                                             ▪ <span className="font-bold">{(info.title).join(" ")} :</span> <br />
                                             {(info.description).join(" ")}
                                         </p>  
@@ -63,19 +70,19 @@ function PersonalHistory({ language }){
 
                         <div className="col-span-2 hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 mb-5 md:max-w-xl">
                             <div className='text-black h-full w-full'>
-                                <h1 className='text-xl text-center font-bold mb-8'>
+                                <h1 className='text-2xl text-center font-bold mb-8'>
                                     ประวัติผู้ปกครอง
                                 </h1>
                                 
                                 <div className="flex flex-row justify-around mb-3">
-                                    <h1 className="text-lg font-bold">บิดา</h1>
-                                    <h1 className="text-lg font-bold">มารดา</h1>
+                                    <h1 className="text-xl font-bold">บิดา</h1>
+                                    <h1 className="text-xl font-bold">มารดา</h1>
                                 </div>
 
                                 <div className="grid grid-cols-2">
                                     <div className="space-y-1">
                                         {personalInfoDad.map((info,i) =>(
-                                            <p key={i} className="py-2 text-sm font-thin">
+                                            <p key={i} className="py-2 text-md font-thin">
                                                 ▪ <span className="font-bold">{(info.title).join(" ")} :</span> {(info.description).join(" ")}
                                             </p>  
                                             
@@ -83,8 +90,8 @@ function PersonalHistory({ language }){
                                         
                                     </div>
                                     <div className="space-y-1">
-                                        {personalInfoDad.map((info,i) =>(
-                                            <p key={i} className="py-2 text-sm font-thin">
+                                        {personalInfoMom.map((info,i) =>(
+                                            <p key={i} className="py-2 text-md font-thin">
                                                 ▪ <span className="font-bold">{(info.title).join(" ")} :</span> {(info.description).join(" ")}
                                             </p>  
                                         ))}
@@ -95,7 +102,7 @@ function PersonalHistory({ language }){
 
                         <div className="row-span-2 col-span-2 hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 mb-5 md:h-fit md:max-w-xl">
                             <div className='text-black h-full w-full'>
-                                <h1 className='text-xl text-center font-bold mb-8'>
+                                <h1 className='text-2xl text-center font-bold mb-8'>
                                     ประวัติการศึกษา
                                 </h1>
                                 
@@ -103,7 +110,7 @@ function PersonalHistory({ language }){
                                     {personalInfoSchools.map((info, i) =>(
                                         <div key={i}>
                                             <img className="w-48 mx-auto rounded-2xl" src={info.api.img} alt={`school_pic_${i}`} />
-                                            <h1 className="text-md text-center mt-5 md:max-w-xs mx-auto">
+                                            <h1 className="text-lg text-center mt-5 md:max-w-xs mx-auto">
                                                 {info.title.map((title, i) =>(
                                                     <p key={i}>{title}</p>    
                                                 ))}

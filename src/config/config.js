@@ -12,7 +12,13 @@ export const config = {
             username: "imjustnon"
         },
         instagram: {
-            username: "not._non"
+            username: "not._non",
+            rapidapi: {
+                host: "instagram130.p.rapidapi.com"
+            }
+        },
+        rapidapi: {
+            key: process.env.REACT_APP_RAPID_API_KEY,
         }
     },
     data: {

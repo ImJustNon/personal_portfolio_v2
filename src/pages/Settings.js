@@ -1,23 +1,33 @@
-import { SimpleGrid, Box, Card, CardHeader, Heading, CardBody, CardFooter, Text, Button, Switch } from "@chakra-ui/react";
+import { SimpleGrid, Box, Card, CardHeader, Heading, CardBody, CardFooter, Text, Button, Switch, Alert, AlertIcon, AlertTitle, AlertDescription, CloseButton, useDisclosure, useToast, Skeleton } from "@chakra-ui/react";
+// import { Switch } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import { useTranslation } from "react-i18next";
+import useParticles from "../components/Particles";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Settings({ language }){
-    const [enabled, setEnabled] = useState(false);
+    const [isParticlesChecked, setIsParticlesChecked] = useState(false);
     const { t, i18n } = useTranslation();
-
+    const toast = useToast();
+    
     // First Load State
-
-
+    useEffect(() =>{
+        const getParticlesConfig = localStorage.getItem("config_particles");
+        setIsParticlesChecked(getParticlesConfig === "true" ? true : false)
+    }, []);
 
     function handleToggleParticlesConfig(event){
-        console.log(String(event.target.checked));
+        localStorage.setItem("config_particles", String(event.target.checked));
+        setIsParticlesChecked(event.target.checked);
+        toast({
+            title: t("Update Success"),
+            description: t("Please reload this page to see the result"),
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+            position: "bottom-right"
+        });
     }   
-
-    // Load config from localStorage 
-    useEffect(() =>{
-        
-    }, []);
 
     return(
         <>
@@ -35,7 +45,7 @@ function Settings({ language }){
                                 {t("Enable Particles Background")}
                             </h2>
                             <div className="card-actions justify-end">
-                                <Switch size='lg' onChange={(event) => handleToggleParticlesConfig(event)} />
+                                <Switch size='lg' onChange={(event) => handleToggleParticlesConfig(event)} isChecked={isParticlesChecked} />
                             </div>
                         </div>
                     </div> 
