@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Josefin+Sans&family=Playpen+Sans&family=Prompt&family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mali&display=swap');
 
 * {
 	font-family: 'Itim', cursive;
+	/* font-family: 'Mali', cursive; */
 }
 .set-bg {
 	width: 100%;
