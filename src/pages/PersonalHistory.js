@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { config } from "../config/config";
 import axios from "axios";
 import profilePicture from "../assets/images/profile.jpg";
+import { useTranslation } from "react-i18next";
 
 function PersonalHistory({ language }){
+    const { t, i18n } = useTranslation();
 
     const [personalInfoMyself, setPersonalInfoMyself] = useState([]);
     const [personalInfoDad, setPersonalInfoDad] = useState([]);
@@ -29,7 +31,7 @@ function PersonalHistory({ language }){
                 'X-RapidAPI-Host': config.api.instagram.rapidapi.host,
             },
         }).then(response => response.json()).then(response =>{
-            setInstagramProfilePic(response.profile_pic_url_hd);
+            setInstagramProfilePic(response.profile_pic_url);
         });
     }, []); 
 
@@ -39,7 +41,7 @@ function PersonalHistory({ language }){
             <div className="container mx-auto">
                 <div className='mt-20 mx-auto'>
                     <h1 className='text-center text-3xl font-semibold'>
-                        {language === "en" ? "Personal History" : "ประวัติส่วนตัว"}
+                        {t("Personal History")}
                     </h1>
                 </div>
                 <div className="mt-14 mx-auto">
@@ -52,7 +54,7 @@ function PersonalHistory({ language }){
                                     <img className="mx-auto rounded-full border-solid border-white border-8" src={profilePicture} alt="Profile_pic" />
                                 </div>
                                 <h1 className='text-2xl text-center font-bold mb-8'>
-                                    ประวัติส่วนตัว
+                                    {t("My Information")}
                                 </h1>
 
                                 <div className="grid grid-cols-2 gap-x-5 items-start mx-auto">
@@ -71,7 +73,7 @@ function PersonalHistory({ language }){
                         <div className="col-span-2 hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 mb-5 md:max-w-xl">
                             <div className='text-black h-full w-full'>
                                 <h1 className='text-2xl text-center font-bold mb-8'>
-                                    ประวัติผู้ปกครอง
+                                    {t("About My Parrents")}
                                 </h1>
                                 
                                 <div className="flex flex-row justify-around mb-3">
@@ -103,7 +105,7 @@ function PersonalHistory({ language }){
                         <div className="row-span-2 col-span-2 hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 mb-5 md:h-fit md:max-w-xl">
                             <div className='text-black h-full w-full'>
                                 <h1 className='text-2xl text-center font-bold mb-8'>
-                                    ประวัติการศึกษา
+                                    {t("About My Education")}
                                 </h1>
                                 
                                 <div className="flex flex-col w-full gap-y-5">
@@ -117,10 +119,12 @@ function PersonalHistory({ language }){
                                             </h1>
                                             <div className="flex flex-row justify-center space-x-5 mt-2">
                                                 <a target="_blank" href={info.button.facebook} className="btn btn-info btn-sm text-white font-thin">
-                                                    <i className="fa-brands fa-facebook"></i> Facebook
+                                                    <i className="fa-brands fa-facebook"></i> 
+                                                    {t("Facebook")}
                                                 </a>
                                                 <a target="_blank" href={info.button.website} className="btn btn-neutral btn-sm text-white font-thin">
-                                                    <i className="fa-solid fa-globe"></i> Website
+                                                    <i className="fa-solid fa-globe"></i> 
+                                                    {t("Website")}
                                                 </a>
                                             </div>
                                         </div>
