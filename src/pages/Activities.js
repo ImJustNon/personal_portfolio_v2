@@ -16,6 +16,9 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Image, Heading, Text, Di
 
 import { config } from "../config/config";
 
+import { useTranslation } from 'react-i18next';
+
+
 function Activities({ language }){
 
     const [activitiesData_VocationalCertificate, setActivitiesData_VocationalCertificate] = useState([]);
@@ -29,12 +32,16 @@ function Activities({ language }){
         }).catch(e => console.log(e));
     }, []);
 
+
+    // translation
+    const { t, i18n } = useTranslation();
+
     return(
         <>
             <div className='container mx-auto'>
                 <div className='mt-20 mx-auto'>
                     <h1 className='text-center text-3xl font-semibold'>
-                        {language === "en" ? "Activities" : "กิจกรรม"}
+                        {t("Activities")}
                     </h1>
                 </div>
                 {/* -------------- */}
@@ -86,7 +93,9 @@ function Activities({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-3xl font-semibold'>{language === "en" ? "Vocational Certificate 1st Years" : "ปวช. 1"}</h1>
+                        <h1 className='text-center text-3xl font-semibold'>
+                            {t("Vocational Certificate 1st Years")}
+                        </h1>
                     </div>
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
@@ -113,7 +122,9 @@ function Activities({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-3xl font-semibold'>{language === "en" ? "Vocational Certificate 2st Years" : "ปวช. 2"}</h1>
+                        <h1 className='text-center text-3xl font-semibold'>
+                            {t("Vocational Certificate 2st Years")}
+                        </h1>
                     </div>
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 

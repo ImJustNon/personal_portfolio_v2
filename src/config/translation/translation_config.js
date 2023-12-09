@@ -4,6 +4,7 @@ import { footerTranslation } from "./footer/data";
 import { settingsTranslation } from "./settings/data";
 import { socialsTranslation } from "./socials/data";
 import { notfoundTranslation } from "./notfound/data";
+import { activitiesTranslation } from "./activities/data";
 
 export const resources = {
     en: {
@@ -14,6 +15,7 @@ export const resources = {
             ...settingsTranslation.en,
             ...socialsTranslation.en,
             ...notfoundTranslation.en,
+            ...activitiesTranslation.en,
         }
     },
     th: {
@@ -24,6 +26,7 @@ export const resources = {
             ...settingsTranslation.th,
             ...socialsTranslation.th,
             ...notfoundTranslation.th,
+            ...activitiesTranslation.th,
         }
     }
 };
