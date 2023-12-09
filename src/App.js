@@ -9,7 +9,6 @@ import { extendTheme } from "@chakra-ui/react";
 import { ComponentStyleConfig, CSSReset } from '@chakra-ui/react';
 import useParticles from "./components/Particles";
 
-
 function App() {
 
 	const particles = useParticles();
