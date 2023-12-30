@@ -1,6 +1,6 @@
 export const certificatesTranslation = {
     en: {
-        "Certificates" : "Activities",
+        "Certificates" : "Certificates",
         "Grade 7 - Grade 9": "Grade 7 - Grade 9",
         "Vocational Certificate 1st Years": "Vocational Certificate 1st Years",
         "Vocational Certificate 2st Years" : "Vocational Certificate 2st Years",
