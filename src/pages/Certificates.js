@@ -1,20 +1,125 @@
+import { useEffect, useState } from "react";
+import { useTranslation } from 'react-i18next';
+import { config } from "../config/config";
+
 function Certificates({ language }){
+
+    const [certificateData_MiddleSchool, setCertificateData_MiddleSchool] = useState([]);
+    const [certificateData_VocationalCertificate, setCertificateData_VocationalCertificate] = useState([]);
+    const [certificateData_VocationalCertificate_2, setCertificateData_VocationalCertificate_2] = useState([]);
+
+    useEffect(() =>{
+        fetch(`https://me.nonlnwza.xyz/api/get/certificate?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
+            setCertificateData_MiddleSchool(response.data.middle_School);
+            setCertificateData_VocationalCertificate(response.data.voc_cert);
+            setCertificateData_VocationalCertificate_2(response.data.voc_cert_2);
+        });      
+    }, []);
+
+    // translation
+    const { t, i18n } = useTranslation();
+
     return(
         <>
             <div className='container mx-auto'>
                 <div className='mt-20 mx-auto'>
                     <h1 className='text-center text-3xl font-semibold'>
-                        {language === "en" ? "Certificates" : "เกียรติบัตร"}
+                        {t("Certificates")}
                     </h1>
                 </div>
                 {/* -------------- */}
                 
+                <hr className='mt-16 mb-14 w-96 mx-auto' />
+
+                <div className='mt-10 mx-auto w-96 md:w-full'>
+                    <div className='mx-auto'>
+                        <h1 className='text-center text-2xl font-semibold'>
+                            {t("Grade 7 - Grade 9")}
+                        </h1>
+                    </div>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+
+                        {certificateData_MiddleSchool.map((data, i) =>(
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure>
+                                    <img src={data.api.img} alt={`activity_img_${i}`} />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                        {data.title.join(" ")}
+                                    </h2>
+                                    <p className='text-center mx-auto font-thin text-md'>
+                                        {data.description.join(" ")}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+
                 
-                <div className="flex justify-center my-40">
-                    <p className="text-3xl">I'm Lazy. LOL</p>
+                <hr className='my-10 w-96 mx-auto' />
+
+                <div className='mt-10 mx-auto w-96 md:w-full'>
+                    <div className='mx-auto'>
+                        <h1 className='text-center text-2xl font-semibold'>
+                            {t("Vocational Certificate 1st Years")}
+                        </h1>
+                    </div>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+
+                        {certificateData_VocationalCertificate.map((data, i) =>(
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure>
+                                    <img src={data.api.img} alt={`activity_img_${i}`} />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                        {data.title.join(" ")}
+                                    </h2>
+                                    <p className='text-center mx-auto font-thin text-md'>
+                                        {data.description.join(" ")}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
                 </div>
 
 
+                <hr className='my-10 w-96 mx-auto' />
+
+                <div className='mt-10 mx-auto w-96 md:w-full'>
+                    <div className='mx-auto'>
+                        <h1 className='text-center text-2xl font-semibold'>
+                            {t("Vocational Certificate 2st Years")}
+                        </h1>
+                    </div>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+
+                        {certificateData_VocationalCertificate_2.map((data, i) =>(
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure>
+                                    <img src={data.api.img} alt={`activity_img_${i}`} />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                        {data.title.join(" ")}
+                                    </h2>
+                                    <p className='text-center mx-auto font-thin text-md'>
+                                        {data.description.join(" ")}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+
+
+                
 
             </div>
         </>

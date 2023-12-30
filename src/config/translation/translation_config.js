@@ -6,6 +6,7 @@ import { socialsTranslation } from "./socials/data";
 import { notfoundTranslation } from "./notfound/data";
 import { activitiesTranslation } from "./activities/data";
 import { personalHistoryTranslation } from "./personal_history/data";
+import { certificatesTranslation } from "./certificates/data";
 
 export const resources = {
     en: {
@@ -18,6 +19,7 @@ export const resources = {
             ...notfoundTranslation.en,
             ...activitiesTranslation.en,
             ...personalHistoryTranslation.en,
+            ...certificatesTranslation.en,
         }
     },
     th: {
@@ -30,6 +32,7 @@ export const resources = {
             ...notfoundTranslation.th,
             ...activitiesTranslation.th,
             ...personalHistoryTranslation.th,
+            ...certificatesTranslation.th,
         }
     }
 };

@@ -6,16 +6,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import '../styles/swiper.css';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
-
 import singaporeExchange from "../assets/images/activities/thai-singapore_exchange_2_crop.jpg";
 import pjbl2 from "../assets/images/activities/pjbl1-2_crop.jpg";
 import stem_2 from "../assets/images/activities/stem_3_crop.jpg";
 import roverScout from "../assets/images/activities/rover_scout_banner_crop.jpg";
-
 import { Card, CardHeader, CardBody, CardFooter, Stack, Image, Heading, Text, Divider, ButtonGroup, Button } from '@chakra-ui/react';
-
 import { config } from "../config/config";
-
 import { useTranslation } from 'react-i18next';
 
 

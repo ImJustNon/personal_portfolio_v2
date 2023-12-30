@@ -2235,6 +2235,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.54.0.tgz#4fab9a2ff7860082c304f750e94acd644cf984cf"
   integrity sha512-ut5V+D+fOoWPgGGNj83GGjnntO39xDy6DWxO0wb7Jp3DcMX0TfIqdzHF85VTQkerdyGmuuMD9AKAo5KiNlf/AQ==
 
+"@fancyapps/ui@^5.0.32":
+  version "5.0.32"
+  resolved "https://registry.yarnpkg.com/@fancyapps/ui/-/ui-5.0.32.tgz#89b4d435f33904c0e2615951dbb38437b9f641de"
+  integrity sha512-jggsU+7W1nxLY4CM/GKcLNpBiaq9TcC8hxIDpTc/YEVTtVgj+ma1etkg9oVT1Q8BVGvcAcS24wScCCbIjeCufw==
+
 "@fortawesome/fontawesome-common-types@6.4.2":
   version "6.4.2"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.4.2.tgz#1766039cad33f8ad87f9467b98e0d18fbc8f01c5"
