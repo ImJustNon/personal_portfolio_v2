@@ -84,14 +84,14 @@ function Controller(){
                     </AppLayout>
                 } 
             />
-            <Route 
+            {/* <Route 
                 path={'/:language/settings'} 
                 element={
                     <AppLayout >
                         <Settings />
                     </AppLayout>
                 } 
-            />
+            /> */}
             <Route 
                 path={'*'} 
                 element={
