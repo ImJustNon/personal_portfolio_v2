@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Input, Button } from "@chakra-ui/react";
 import React from "react";
@@ -7,6 +7,7 @@ import enImage from "../assets/images/languages/en.jpg";
 import thImage from "../assets/images/languages/th.jpg";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import SettingsDrawer from "./SettingsDrawer";
 
 function Navbar({language}){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,17 @@ function Navbar({language}){
     }
 
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    // mobile Navigation Drawer
+    const mobileNavigationDrawerDisclosure = useDisclosure();
+    const mobileNavigationDrawerIsOpen = mobileNavigationDrawerDisclosure.isOpen;
+    const mobileNavigationDrawerOnOpen = mobileNavigationDrawerDisclosure.onOpen;
+    const mobileNavigationDrawerOnClose = mobileNavigationDrawerDisclosure.onClose;
+
+    // settings drawer
+    const settingDrawerDisclosure = useDisclosure();
+    const settingDrawerIsOpen = settingDrawerDisclosure.isOpen;
+    const settingDrawerOnOpen = settingDrawerDisclosure.onOpen;
+    const settingDrawerOnClose = settingDrawerDisclosure.onClose;
 
 
 
@@ -81,12 +92,13 @@ function Navbar({language}){
                                 <i className="fa-solid fa-share-from-square"></i>
                                 {t("Socials")}
                             </Link>
-                            <Link 
-                                to={`/${language}/settings`} 
+                            <button 
+                                // to={`/${language}/settings`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/settings") ? "btn-active" : ""}`} 
+                                onClick={settingDrawerOnOpen}
                             >
                                 <i className="fa-solid fa-gear"></i>
-                            </Link>
+                            </button>
                         </div>
                     </div>
                     <div className="navbar-end text-end">
@@ -116,13 +128,17 @@ function Navbar({language}){
                         </div>
 
                         {/* Mobile burger button */}
-                        <div className="btn btn-ghost lg:hidden" onClick={onOpen}>
+                        <div className="btn btn-ghost lg:hidden" onClick={mobileNavigationDrawerOnOpen}>
                             <Burger />
                         </div>
-                        <MobileDrawer isOpen={isOpen} onClose={onClose} onOpen={onOpen} language={language} />
                     </div>
                 </div>
             </div>
+
+            {/* Mobile navigation drawer */}
+            <MobileDrawer isOpen={mobileNavigationDrawerIsOpen} onClose={mobileNavigationDrawerOnClose} onOpen={mobileNavigationDrawerOnOpen} settingDrawerOnOpen={settingDrawerOnOpen} language={language} />
+            {/* Settings Drawer */}
+            <SettingsDrawer isOpen={settingDrawerIsOpen} onOpen={settingDrawerOnOpen} onClose={settingDrawerOnClose} />
         </>
     );
 }
@@ -148,7 +164,7 @@ function Burger(){
 }
 
 
-function MobileDrawer({isOpen, onClose, onOpen, language}) {
+function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) {
     const btnRef = React.useRef()
     // translation
     const { t, i18n } = useTranslation();
@@ -179,60 +195,60 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
 
                             <Link to={`/${language}/`} className="btn btn-md btn-neutral w-full">
                                 <div className="grid grid-cols-3 gap-4 w-full">
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <i className="fa-solid fa-house"></i>
                                     </div>
-                                    <div class="col-span-2 text-left">
+                                    <div className="col-span-2 text-left">
                                         {t("Home")}
                                     </div>
                                 </div>
                             </Link>
                             <Link to={`/${language}/personal-history`} className="btn btn-md btn-neutral w-full">
                                 <div className="grid grid-cols-3 gap-4 w-full">
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <i className="fa-solid fa-folder"></i>
                                     </div>
-                                    <div class="col-span-2 text-left">
+                                    <div className="col-span-2 text-left">
                                         {t("Personal History")}
                                     </div>
                                 </div>
                             </Link>
                             <Link to={`/${language}/certificates`} className="btn btn-md btn-neutral w-full">
                                 <div className="grid grid-cols-3 gap-4 w-full">
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <i className="fa-solid fa-trophy"></i>
                                     </div>
-                                    <div class="col-span-2 text-left">
+                                    <div className="col-span-2 text-left">
                                         {t("Certificates")}
                                     </div>
                                 </div>
                             </Link>
                             <Link to={`/${language}/activities`} className="btn btn-md btn-neutral w-full">
                                 <div className="grid grid-cols-3 gap-4 w-full">
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <i className="fa-solid fa-medal"></i>
                                     </div>
-                                    <div class="col-span-2 text-left">
+                                    <div className="col-span-2 text-left">
                                         {t("Activities")}
                                     </div>
                                 </div>
                             </Link>
                             <Link to={`/${language}/projects`} className="btn btn-md btn-neutral w-full">
                                 <div className="grid grid-cols-3 gap-4 w-full">
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <i className="fa-solid fa-code"></i>
                                     </div>
-                                    <div class="col-span-2 text-left">
+                                    <div className="col-span-2 text-left">
                                         {t("Projects")}
                                     </div>
                                 </div>
                             </Link>
                             <Link to={`/${language}/socials`} className="btn btn-md btn-neutral w-full">
                                 <div className="grid grid-cols-3 gap-4 w-full">
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <i className="fa-solid fa-share-from-square"></i>
                                     </div>
-                                    <div class="col-span-2 text-left">
+                                    <div className="col-span-2 text-left">
                                         {t("Socials")}
                                     </div>
                                 </div>
@@ -243,10 +259,10 @@ function MobileDrawer({isOpen, onClose, onOpen, language}) {
                     <DrawerFooter>
                         <div className="flex flex-row justify-between w-full">
                             <div>
-                                <Link to={`/${language}/settings`} className="btn btn-sm rounded-full" >
+                                <button className="btn btn-sm rounded-full" onClick={settingDrawerOnOpen} >
                                     <i className="fa-solid fa-gear"></i> 
                                     {/* {language === "en" ? "Settings" : "ตั้งค่า"} */}
-                                </Link>
+                                </button>
                             </div>
                             <div>
                                 <button className="btn btn-sm rounded-full" onClick={onClose}>

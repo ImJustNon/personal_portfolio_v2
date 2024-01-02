@@ -16,6 +16,8 @@ function Settings({ language }){
         setIsParticlesChecked(getParticlesConfig === "true" ? true : false)
     }, []);
 
+
+
     function handleToggleParticlesConfig(event){
         localStorage.setItem("config_particles", String(event.target.checked));
         setIsParticlesChecked(event.target.checked);
