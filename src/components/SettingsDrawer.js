@@ -11,11 +11,16 @@ import { useTransition } from "react";
 import thailandFlag from "../assets/images/languages/th.jpg";
 import unitedStateFlag from "../assets/images/languages/en.jpg";
 
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 function SettingsDrawer(props){
     // setup toast
     const toast = useToast();
+
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     const { isOpen, onClose, onOpen } = props;
     const btnRef = React.useRef();
@@ -29,13 +34,16 @@ function SettingsDrawer(props){
     // First Load State
     useEffect(() =>{
         const getParticlesConfig = localStorage.getItem("config_particles");
-        setIsParticlesChecked(getParticlesConfig === "true" ? true : false)
+        setIsParticlesChecked(getParticlesConfig === "true" ? true : false);
     }, []);
 
 
     // handlers
     function handleApplyButton(){
-        window.location.reload();
+        if(pathname.startsWith(`/${i18n.language}`)){
+            return window.location.reload();
+        }
+        return window.location.replace(pathname.startsWith("/en") ? pathname.replace("en", "th") : pathname.replace("th", "en"));
     }
 
     function handleToggleParticlesConfig(event){
@@ -74,13 +82,13 @@ function SettingsDrawer(props){
                 
                 <DrawerBody>
                     <div className="flex flex-col w-full">
-                        <div className="grid grid-cols-4 gap-x-1 text-center">
+                        <div className="grid grid-cols-4 gap-x-2 text-center">
                             <div className="col-span-3">
-                                <input type="text" placeholder="Type here..." className="input input-bordered input-sm w-full" />
+                                <input type="text" placeholder={t("Type here...")} className="input input-bordered input-sm w-full" />
                             </div>
                             <div>
                                 <button className="btn btn-sm btn-neutral font-light">
-                                    Search
+                                    {t("Search")}
                                 </button>
                             </div>
                         </div>
@@ -88,7 +96,7 @@ function SettingsDrawer(props){
                         <div className="flex flex-col gap-y-10 mt-5">
                             <div className="grid grid-cols-3">
                                 <h1 className="text-2xl col-span-2">
-                                    Particles BG
+                                    {t("Particles BG")}
                                 </h1>
                                 <div className="text-center">
                                     <Switch size='lg' onChange={(event) => handleToggleParticlesConfig(event)} isChecked={isParticlesChecked} />
@@ -96,10 +104,10 @@ function SettingsDrawer(props){
                             </div>
                             <div className="grid grid-cols-4">
                                 <h1 className="text-2xl col-span-2">
-                                    Language
+                                    {t("Language")}
                                 </h1>
                                 <div className="text-center col-span-2">
-                                    <SelectLanguageComponent></SelectLanguageComponent>
+                                    <SelectLanguageComponent />
                                 </div>
                             </div>
                         </div>
@@ -112,7 +120,7 @@ function SettingsDrawer(props){
                         <div>
                             <button className="btn btn-md btn-neutral rounded-full" onClick={onClose}>
                                 <i className="fa-solid fa-o"></i> 
-                                {t("Cancer")}
+                                {t("Cancle")}
                             </button>
                         </div>
                         <div>
@@ -169,7 +177,7 @@ function SelectLanguageComponent(){
         <>
             <Listbox value={selected} onChange={(value) => handleChange(value)}>
                 <div className="relative mt-1">
-                    <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                    <Listbox.Button className="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
                         <span className="block truncate">{selected.name}</span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                             <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -185,7 +193,7 @@ function SelectLanguageComponent(){
                             {language.map((lang, i) => (
                                 <Listbox.Option
                                     key={i}
-                                    className={({ active }) => `relative cursor-default select-none py-2 pl-10 pr-4 rounded-md ${active ? 'bg-slate-200 text-slate-800' : 'text-gray-900'}`}
+                                    className={({ active }) => `relative cursor-pointer select-none py-2 pl-10 pr-4 rounded-md ${active ? 'bg-slate-200 text-slate-800' : 'text-gray-900'}`}
                                     value={lang}
                                 >
 

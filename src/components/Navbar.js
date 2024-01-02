@@ -93,8 +93,7 @@ function Navbar({language}){
                                 {t("Socials")}
                             </Link>
                             <button 
-                                // to={`/${language}/settings`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/settings") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${settingDrawerIsOpen ? "btn-active" : ""}`} 
                                 onClick={settingDrawerOnOpen}
                             >
                                 <i className="fa-solid fa-gear"></i>
