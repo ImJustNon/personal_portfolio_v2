@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
 import { config } from "../config/config";
+import Fancybox from "../utilities/fancybox_wrapper";
+import { options } from "../config/fancybox_options";
 
 function Certificates({ language }){
 
@@ -37,25 +39,29 @@ function Certificates({ language }){
                             {t("Grade 7 - Grade 9")}
                         </h1>
                     </div>
-                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
-
-                        {certificateData_MiddleSchool.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
-                                <figure>
-                                    <img src={data.api.img} alt={`activity_img_${i}`} />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
-                                        {data.title.join(" ")}
-                                    </h2>
-                                    <p className='text-center mx-auto font-thin text-md'>
-                                        {data.description.join(" ")}
-                                    </p>
+                    <Fancybox options={options} >
+                        <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+                        
+                            {certificateData_MiddleSchool.map((data, i) =>(
+                                <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                    <figure>
+                                        <a data-fancybox="certificate_mid" data-caption={data.title.join(" ")} href={data.api.img} >
+                                            <img src={data.api.img} alt={`activity_img_${i}`} />
+                                        </a>
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                            {data.title.join(" ")}
+                                        </h2>
+                                        <p className='text-center mx-auto font-thin text-md'>
+                                            {data.description.join(" ")}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
 
-                    </div>
+                        </div>
+                    </Fancybox>
                 </div>
 
                 
@@ -67,25 +73,29 @@ function Certificates({ language }){
                             {t("Vocational Certificate 1st Years")}
                         </h1>
                     </div>
-                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+                    <Fancybox options={options}>
+                        <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
-                        {certificateData_VocationalCertificate.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
-                                <figure>
-                                    <img src={data.api.img} alt={`activity_img_${i}`} />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
-                                        {data.title.join(" ")}
-                                    </h2>
-                                    <p className='text-center mx-auto font-thin text-md'>
-                                        {data.description.join(" ")}
-                                    </p>
+                            {certificateData_VocationalCertificate.map((data, i) =>(
+                                <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                    <figure>
+                                        <a data-fancybox="certificate_vocationalcertificate_1" data-caption={data.title.join(" ")} href={data.api.img} >
+                                            <img src={data.api.img} alt={`activity_img_${i}`} />
+                                        </a>
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                            {data.title.join(" ")}
+                                        </h2>
+                                        <p className='text-center mx-auto font-thin text-md'>
+                                            {data.description.join(" ")}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
 
-                    </div>
+                        </div>
+                    </Fancybox>
                 </div>
 
 
@@ -97,25 +107,29 @@ function Certificates({ language }){
                             {t("Vocational Certificate 2st Years")}
                         </h1>
                     </div>
-                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+                    <Fancybox options={options}>
+                        <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
-                        {certificateData_VocationalCertificate_2.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
-                                <figure>
-                                    <img src={data.api.img} alt={`activity_img_${i}`} />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
-                                        {data.title.join(" ")}
-                                    </h2>
-                                    <p className='text-center mx-auto font-thin text-md'>
-                                        {data.description.join(" ")}
-                                    </p>
+                            {certificateData_VocationalCertificate_2.map((data, i) =>(
+                                <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                    <figure>
+                                        <a data-fancybox="certificate_vocationalcertificate_2" data-caption={data.title.join(" ")} href={data.api.img} >
+                                            <img src={data.api.img} alt={`activity_img_${i}`} />
+                                        </a>
+                                    </figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                            {data.title.join(" ")}
+                                        </h2>
+                                        <p className='text-center mx-auto font-thin text-md'>
+                                            {data.description.join(" ")}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
 
-                    </div>
+                        </div>
+                    </Fancybox>
                 </div>
 
 

@@ -1,6 +1,8 @@
 import Fancybox from "../utilities/fancybox_wrapper";
-
+import { options } from "../config/fancybox_options";
 function Projects({ language }){
+
+
     return(
         <>
             <div className='container mx-auto'>
@@ -17,29 +19,7 @@ function Projects({ language }){
                 </div>
 
 
-                <Fancybox
-                    options={{
-                        Carousel: {
-                        infinite: false,
-                        },
-                        Toolbar: {
-                            display: {
-                            left: [
-                            ],
-                            middle: [
-                                "infobar",
-                            ],
-                            right: [
-                                "rotateCW",
-                                // "iterateZoom",
-                                "slideshow",
-                                // "thumbs", 
-                                "close",
-                            ],
-                            },
-                        },
-                    }}
-                >
+                <Fancybox options={options} >
                     <div className="grid grid-cols-4 w-5/6 mx-auto gap-5">
                         <a data-fancybox="lnwza" data-caption={"asdasdasdasd"} href="https://lipsum.app/id/60/1600x1200">
                             <img src="https://lipsum.app/id/60/200x150" width="200" height="150" />
@@ -59,7 +39,6 @@ function Projects({ language }){
                     </div>
                     
                 </Fancybox>
-            
             </div>
         </>
     );
