@@ -21,7 +21,7 @@ function NotFound({ language }){
                         </div>
                         <div>
                             <h1 className='text-3xl font-semibold'>
-                                {t("404 : Page NotFound")}
+                                {t("404 : This Page Could not Be Found")}
                             </h1>
                             <div className="grid grid-cols gap-5 justify-center w-96 mt-5 mx-auto">
                                 <button className="btn btn-outline text-xl" onClick={() => handleGoBack()}>

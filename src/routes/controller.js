@@ -10,6 +10,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AppLayout from "../layouts/AppLayout";
 import { useEffect } from 'react';
 import Settings from "../pages/Settings";
+import ActivitiesDetails from "../pages/ActivitiesDetails";
 
 function Controller(){
     const navigate = useNavigate();
@@ -65,6 +66,14 @@ function Controller(){
                 element={
                     <AppLayout>
                         <Activities />
+                    </AppLayout>
+                } 
+            />
+            <Route 
+                path={'/:language/activities/:id'} 
+                element={
+                    <AppLayout>
+                        <ActivitiesDetails />
                     </AppLayout>
                 } 
             />

@@ -4,8 +4,8 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '../styles/swiper.css';
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+// import '../styles/swiper.css';
+import { Autoplay, EffectFade, Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import singaporeExchange from "../assets/images/activities/thai-singapore_exchange_2_crop.jpg";
 import pjbl2 from "../assets/images/activities/pjbl1-2_crop.jpg";
 import stem_2 from "../assets/images/activities/stem_3_crop.jpg";
@@ -13,9 +13,12 @@ import roverScout from "../assets/images/activities/rover_scout_banner_crop.jpg"
 import { Card, CardHeader, CardBody, CardFooter, Stack, Image, Heading, Text, Divider, ButtonGroup, Button } from '@chakra-ui/react';
 import { config } from "../config/config";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from "react-router-dom";
 
 
 function Activities({ language }){
+
+    const navigate = useNavigate();
 
     const [activitiesData_VocationalCertificate, setActivitiesData_VocationalCertificate] = useState([]);
     const [activitiesData_VocationalCertificate_2, setActivitiesData_VocationalCertificate_2] = useState([]);
@@ -31,59 +34,59 @@ function Activities({ language }){
 
     // translation
     const { t, i18n } = useTranslation();
+    const currentLanguage = i18n.language;
+
+
+    function handleNavigateDetails(id){
+        navigate(`/${currentLanguage}/activities/${id}`);
+    }
 
     return(
         <>
-            <div className='container mx-auto'>
-                <div className='mt-20 mx-auto'>
-                    <h1 className='text-center text-3xl font-semibold'>
-                        {t("Activities")}
-                    </h1>
-                </div>
-                {/* -------------- */}
+            <div className='mt-20 mx-auto'>
+                <h1 className='text-center text-3xl font-semibold'>
+                    {t("Activities")}
+                </h1>
+            </div>
+            {/* -------------- */}
 
-                <div className="mt-14 mx-auto w-96 h-44 shadow-2xl md:w-full md:h-96 border-2 rounded-3xl border-slate-100">
-                    <Swiper
-                        style={{
-                            '--swiper-navigation-color': '#fff',
-                            '--swiper-pagination-color': '#fff',
-                        }}
-                        spaceBetween={30}
-                        lazy={"true"}
-                        rewind={true}
-                        autoplay={{
-                            delay: 3500,
-                            disableOnInteraction: false,
-                        }}
-                        effect={'fade'}
-                        navigation={true}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={
-                            [
-                                Autoplay,
-                                EffectFade, 
-                                Navigation, 
-                                Pagination,
-                            ]
-                        }
-                        className={"w-full h-full rounded-3xl"}
-                    >
-                        <SwiperSlide className='bg-center bg-cover'>
-                            <img alt='img-1' className='block w-full h-full md:h-auto' src={singaporeExchange} />
-                        </SwiperSlide>
-                        <SwiperSlide className='bg-center bg-cover'>
-                            <img alt='img-4' className='block w-full h-full md:h-auto' src={stem_2} />
-                        </SwiperSlide>
-                        <SwiperSlide className='bg-center bg-cover'>
-                            <img alt='img-2' className='block w-full h-full md:h-auto' src={pjbl2} />
-                        </SwiperSlide>
-                        <SwiperSlide className='bg-center bg-cover'>
-                            <img alt='img-3' className='block w-full h-full md:h-auto' src={roverScout} />
-                        </SwiperSlide>
-                    </Swiper>
-                </div>
+            <div className="mt-14 mx-auto w-full px-5 md:w-full ">
+                <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    navigation={false}
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: false,
+                    }}
+                    autoplay={{
+                        delay: 1500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={true}
+                    modules={[Autoplay, EffectCoverflow, Pagination]}
+                >
+                    <SwiperSlide>
+                        <Image src={singaporeExchange} className='rounded-md' />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src={stem_2} className='rounded-md' />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src={pjbl2} className='rounded-md' />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src={roverScout} className='rounded-md' />
+                    </SwiperSlide>
+                </Swiper>
+            </div>
+            
+            <div className='container mx-auto'>          
 
                 <hr className='my-14 w-96 mx-auto' />
 
@@ -96,7 +99,7 @@ function Activities({ language }){
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {activitiesData_VocationalCertificate.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.api.v2.name)}>
                                 <figure>
                                     <img src={data.api.img} alt={`activity_img_${i}`} />
                                 </figure>
@@ -125,7 +128,7 @@ function Activities({ language }){
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {activitiesData_VocationalCertificate_2.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.api.v2.name)}>
                                 <figure>
                                     <img src={data.api.img} alt={`activity_img_${i}`} />
                                 </figure>
