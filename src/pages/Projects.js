@@ -16,6 +16,7 @@ function Projects({ language }){
                 
                 <div className="flex justify-center my-40">
                     <p className="text-3xl">I have created this page since 2023 and now it still not finish. LOL</p>
+                    <p className="text-xl">'Cause I Lazy. LOL</p>
                 </div>
 
 
