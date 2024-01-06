@@ -11,6 +11,7 @@ import AppLayout from "../layouts/AppLayout";
 import { useEffect } from 'react';
 import Settings from "../pages/Settings";
 import ActivitiesDetails from "../pages/ActivitiesDetails";
+import ProjectsDetails from "../pages/ProjectsDetails";
 
 function Controller(){
     const navigate = useNavigate();
@@ -82,6 +83,14 @@ function Controller(){
                 element={
                     <AppLayout>
                         <Projects />
+                    </AppLayout>
+                } 
+            />
+            <Route 
+                path={'/:language/projects/:id'} 
+                element={
+                    <AppLayout>
+                        <ProjectsDetails />
                     </AppLayout>
                 } 
             />

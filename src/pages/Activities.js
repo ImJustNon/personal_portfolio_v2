@@ -20,12 +20,14 @@ function Activities({ language }){
 
     const navigate = useNavigate();
 
+    const [activitiesData_Banners, setActivitiesData_Banners] = useState([]);
     const [activitiesData_VocationalCertificate, setActivitiesData_VocationalCertificate] = useState([]);
     const [activitiesData_VocationalCertificate_2, setActivitiesData_VocationalCertificate_2] = useState([]);
 
     useEffect(() =>{
         fetch(`https://me.nonlnwza.xyz/api/get/activity?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
             console.log(response);
+            setActivitiesData_Banners(response.data.banner);
             setActivitiesData_VocationalCertificate(response.data.voc_cert);
             setActivitiesData_VocationalCertificate_2(response.data.voc_cert_2);
         }).catch(e => console.log(e));
@@ -83,6 +85,12 @@ function Activities({ language }){
                     <SwiperSlide>
                         <Image src={roverScout} className='rounded-md' />
                     </SwiperSlide>
+                    
+                    {activitiesData_Banners.map((info, i) =>(
+                        <SwiperSlide key={i}>
+                            <Image src={info.api.img} className='rounded-md' />
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
             
