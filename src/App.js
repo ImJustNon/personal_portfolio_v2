@@ -8,18 +8,21 @@ import Controller from './routes/controller';
 import { extendTheme } from "@chakra-ui/react";
 import { ComponentStyleConfig, CSSReset } from '@chakra-ui/react';
 import useParticles from "./components/Particles";
+import useMusicPlayer from './components/Howler';
+import { useEffect } from 'react';
 
 function App() {
 
 	const particles = useParticles();
-
   	return (
-		<ChakraProvider>
-			<div className='set-bg'></div>
-			<particles.Component />
-			<Controller />
-		</ChakraProvider>
-  	);
+		<>
+			<ChakraProvider>
+				<div className='set-bg'></div>
+				<particles.Component />
+				<Controller />
+			</ChakraProvider>
+		</>
+	);
 }
 
 export default App;

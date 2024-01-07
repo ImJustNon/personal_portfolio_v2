@@ -1,4 +1,6 @@
 import { useDisclosure, useToast, Switch, Button, Divider, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Stack, Box, FormLabel, Input, InputGroup, InputLeftAddon, InputRightAddon, Select, DrawerFooter, Textarea, AddIcon } from "@chakra-ui/react";
+import { Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark } from '@chakra-ui/react';
+
 import React, { useState, useRef, useEffect, useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Listbox } from '@headlessui/react'
@@ -14,6 +16,9 @@ import unitedStateFlag from "../assets/images/languages/en.jpg";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
+import useMusicPlayer from "../components/Howler";
+
+import { toastSuccess } from "../utilities/chakraui_toast";
 
 function SettingsDrawer(props){
     // setup toast
@@ -30,7 +35,7 @@ function SettingsDrawer(props){
 
     // config state
     const [isParticlesChecked, setIsParticlesChecked] = useState(false);
-
+    const [isMusicChecked, setIsMusicChecked] = useState(false);
     // First Load State
     useEffect(() =>{
         const getParticlesConfig = localStorage.getItem("config_particles");
@@ -49,15 +54,23 @@ function SettingsDrawer(props){
     function handleToggleParticlesConfig(event){
         localStorage.setItem("config_particles", String(event.target.checked));
         setIsParticlesChecked(event.target.checked);
-        toast({
-            title: t("Update Success"),
-            description: t("Please reload this page to see the result"),
-            status: 'success',
-            duration: 2500,
-            isClosable: true,
-            position: "bottom-left"
-        });
+        
+        toast(toastSuccess(t("Update Success"), t("Please reload this page to see the result")));
     }   
+
+    // music player
+    const musicPlayer = useMusicPlayer();
+    const musicPlayerCurrentVolume = musicPlayer.volume;
+    const musicPLayerSetVolume = musicPlayer.setVolume;
+
+    function handleMusic(mode){
+        if(mode === "play"){
+            musicPlayer.play();
+        }
+        else if(mode === "stop"){
+            musicPlayer.stop();
+        }   
+    }
 
     return (
         <>
@@ -110,6 +123,24 @@ function SettingsDrawer(props){
                                     <SelectLanguageComponent />
                                 </div>
                             </div>
+                            <div className="grid grid-cols-4">
+                                <h1 className="text-2xl col-span-2">
+                                    {t("Music BG")}
+                                </h1>
+                                <div className="flex flex-row justify-between col-span-2 text-center">
+                                    <button className="btn btn-ghost btn-sm" onClick={() => handleMusic("play")}>Play</button>
+                                    <p className="text-lg"><i className="fa-solid fa-ellipsis-vertical"></i></p>
+                                    <button className="btn btn-ghost btn-sm" onClick={() => handleMusic("stop")}>Stop</button>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4">
+                                <h1 className="text-2xl col-span-2">
+                                    {t("Volume")}
+                                </h1>
+                                <div className="flex flex-row col-span-2 text-center gap-x-3">
+                                    <VolumeChangerComponent currentVolume={musicPlayerCurrentVolume} setVolume={musicPLayerSetVolume} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     {/* <Input placeholder='Type here...' /> */}
@@ -134,7 +165,7 @@ function SettingsDrawer(props){
             </DrawerContent>
             </Drawer>
         </>
-    )
+    );
 }
 
 
@@ -220,6 +251,28 @@ function SelectLanguageComponent(){
                     </Transition>
                 </div>
             </Listbox>
+        </>
+    );
+}
+
+
+function VolumeChangerComponent({ currentVolume, setVolume }){
+
+    function handleSetVolume(value){
+        const convertedValue = value / 100;
+        setVolume(convertedValue);
+    }
+
+    return (
+        <>
+            <Slider aria-label='slider-ex-4' defaultValue={currentVolume * 100} onChange={(value) => handleSetVolume(value)}>
+            <SliderTrack bg="Gray">
+                <SliderFilledTrack bg='black' />
+            </SliderTrack>
+            <SliderThumb boxSize={6} >
+                <i className="fa-solid fa-headphones-simple"></i>
+            </SliderThumb>
+            </Slider>
         </>
     );
 }
