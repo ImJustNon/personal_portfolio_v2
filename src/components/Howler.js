@@ -12,7 +12,7 @@ const useMusicPlayer = () => {
 	const [musicList, setMusicList] = useState([]);
 	const [volume, setVolume] = useState(0.5);
 	// let musicIndex = 0;
-	let musicIndex = Math.random() * musicList.length - 1;
+	let musicIndex = parseInt(Math.random() * musicList.length - 1);
 
 	const toast = useToast();
 
@@ -63,7 +63,7 @@ const useMusicPlayer = () => {
 	function handleSongEnd(){
 		console.log("End");
 		// musicIndex = musicIndex > musicList.length ? 0 : musicIndex + 1;
-		musicIndex = Math.random() * musicList.length - 1;
+		musicIndex = parseInt(Math.random() * musicList.length - 1);
 		// toast(toastSuccess(null, t("Changing to : ") + musicIndex))
 		console.log(musicIndex);
 		play();
