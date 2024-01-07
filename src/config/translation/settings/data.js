@@ -10,6 +10,13 @@ export const settingsTranslation = {
         "Language": "Language",
         "Cancle": "Cancle",
         "Apply": "Apply",
+        "Close": "Close",
+        "Music BG": "Music BG",
+        "Volume": "Volume",
+        "Play": "Play",
+        "Stop": "Stop",
+        "Music will start in a moment": "Music will start in a moment",
+        "Music stoped": "Music stoped",
     },
     th: {
         "Settings": "การตั้งค่า",
@@ -22,5 +29,12 @@ export const settingsTranslation = {
         "Language": "ภาษา",
         "Cancle": "ยกเลิก",
         "Apply": "ปรับใช้",
+        "Close": "ปิด",
+        "Music BG": "เพลง",
+        "Volume": "ระดับเสียง",
+        "Play": "เล่น",
+        "Stop": "หยุด",
+        "Music will start in a moment": "เพลงกำลังจะเริ่ม",
+        "Music stoped": "เพลงหยุดเเล้ว",
     }
 }

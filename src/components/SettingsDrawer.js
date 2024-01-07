@@ -174,17 +174,17 @@ function SettingsDrawer(props){
                 </DrawerBody>
     
                 <DrawerFooter className="mb-5">
-                    <div className="flex flex-row justify-around w-full">
+                    <div className="flex flex-row justify-between w-full px-8 pb-5">
                         <div>
-                            <button className="btn btn-md btn-neutral rounded-full" onClick={onClose}>
-                                <i className="fa-solid fa-o"></i> 
-                                {t("Cancle")}
+                            <button className="btn btn-sm btn-outline btn-ghost rounded-full" onClick={() => handleApplyButton()} >
+                                <i className="fa-solid fa-check"></i>  
+                                {t("Apply")}
                             </button>
                         </div>
                         <div>
-                            <button className="btn btn-md btn-success rounded-full" onClick={() => handleApplyButton()} >
-                                <i className="fa-solid fa-check"></i>  
-                                {t("Apply")}
+                            <button className="btn btn-sm btn-outline btn-ghost rounded-full" onClick={onClose}>
+                                <i className="fa-solid fa-o"></i> 
+                                {t("Close")}
                             </button>
                         </div>
                     </div>
