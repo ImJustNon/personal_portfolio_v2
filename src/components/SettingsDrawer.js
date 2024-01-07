@@ -54,7 +54,7 @@ function SettingsDrawer(props){
     function handleToggleParticlesConfig(event){
         localStorage.setItem("config_particles", String(event.target.checked));
         setIsParticlesChecked(event.target.checked);
-        
+
         toast(toastSuccess(t("Update Success"), t("Please reload this page to see the result")));
     }   
 
@@ -72,6 +72,33 @@ function SettingsDrawer(props){
         }   
     }
 
+    // search function
+    const [searchQuery, setSearchQuery] = useState("");
+    function handleClearSearch(event){
+        document.getElementById("search_input").value = "";
+        handleSearch("");
+    }
+    function handleSearch(value){
+        setSearchQuery(value);
+
+        const query = value;
+        const childrenElementsIdName = [];
+        const getSettingsFieldElement = document.getElementById("settings_field");
+        const getChildElements = getSettingsFieldElement.children;
+        for(let child of getChildElements){
+            childrenElementsIdName.push(child.id);
+        }
+
+        const findSameAsSearchQuery = childrenElementsIdName.filter(idName => idName.includes(query));
+        const findNotSameAsSearchQuery = childrenElementsIdName.filter(idName => !idName.includes(query));
+        findSameAsSearchQuery.forEach(idName =>{
+            document.getElementById(idName).hidden = false;
+        });
+        findNotSameAsSearchQuery.forEach(idName =>{
+            document.getElementById(idName).hidden = true;
+        });
+    }
+
     return (
         <>
             <Drawer
@@ -87,7 +114,7 @@ function SettingsDrawer(props){
                 <DrawerHeader className="w-full">
                     <div className="flex justify-center">
                         <h1 className="text-2xl pt-3">
-                            {t("Settings")}
+                            {`< ${t("Settings")} />`}
                         </h1>
                     </div>
                     <Divider orientation='horizontal' className="mt-3"/>
@@ -95,19 +122,19 @@ function SettingsDrawer(props){
                 
                 <DrawerBody>
                     <div className="flex flex-col w-full">
-                        <div className="grid grid-cols-4 gap-x-2 text-center">
-                            <div className="col-span-3">
-                                <input type="text" placeholder={t("Type here...")} className="input input-bordered input-sm w-full" />
+                        <div className="grid grid-cols-5 gap-x-2 text-center">
+                            <div className="col-span-4">
+                                <input id="search_input" type="text" placeholder={t("Type here...")} className="input input-bordered input-sm w-full" onChange={(event) => handleSearch(event.target.value)} />
                             </div>
                             <div>
-                                <button className="btn btn-sm btn-neutral font-light">
-                                    {t("Search")}
+                                <button className="btn btn-sm btn-neutral font-light" onClick={(event) => handleClearSearch(event)}>
+                                    <i className="fa-solid fa-xmark fa-lg"></i>
                                 </button>
                             </div>
                         </div>
                         <Divider orientation='horizontal' className="my-3"/>
-                        <div className="flex flex-col gap-y-10 mt-5">
-                            <div className="grid grid-cols-3">
+                        <div id="settings_field" className="flex flex-col gap-y-10 mt-5">
+                            <div id="particlesbg" className="grid grid-cols-3">
                                 <h1 className="text-2xl col-span-2">
                                     {t("Particles BG")}
                                 </h1>
@@ -115,7 +142,7 @@ function SettingsDrawer(props){
                                     <Switch size='lg' onChange={(event) => handleToggleParticlesConfig(event)} isChecked={isParticlesChecked} />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-4">
+                            <div id="language" className="grid grid-cols-4">
                                 <h1 className="text-2xl col-span-2">
                                     {t("Language")}
                                 </h1>
@@ -123,7 +150,7 @@ function SettingsDrawer(props){
                                     <SelectLanguageComponent />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-4">
+                            <div id="musicbg" className="grid grid-cols-4">
                                 <h1 className="text-2xl col-span-2">
                                     {t("Music BG")}
                                 </h1>
@@ -133,7 +160,7 @@ function SettingsDrawer(props){
                                     <button className="btn btn-ghost btn-sm" onClick={() => handleMusic("stop")}>Stop</button>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-4">
+                            <div id="musicvolume" className="grid grid-cols-4">
                                 <h1 className="text-2xl col-span-2">
                                     {t("Volume")}
                                 </h1>

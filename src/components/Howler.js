@@ -49,7 +49,7 @@ const useMusicPlayer = () => {
 		console.log(musicIndex)
 		soundRef.current.play();
 
-		toast(toastSuccess(null, t("Music Started")));
+		toast(toastSuccess(null, t("Music will start in a moment")));
 	};
 
 	function stop(){
@@ -57,7 +57,7 @@ const useMusicPlayer = () => {
 			return;
 		}
 		soundRef.current.stop();
-		toast(toastSuccess(null, t("Music Stoped")));
+		toast(toastSuccess(null, t("Music stoped")));
 	};
 	function handleSongEnd(){
 		console.log("End")
