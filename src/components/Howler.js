@@ -11,7 +11,8 @@ const useMusicPlayer = () => {
 	const soundRef = useRef(null);
 	const [musicList, setMusicList] = useState([]);
 	const [volume, setVolume] = useState(0.5);
-	let musicIndex = 0;
+	// let musicIndex = 0;
+	let musicIndex = Math.random() * musicList.length - 1;
 
 	const toast = useToast();
 
@@ -46,7 +47,7 @@ const useMusicPlayer = () => {
 			soundRef.current.unload();
 		}
 		createPlayer();
-		console.log(musicIndex)
+		console.log(musicIndex);
 		soundRef.current.play();
 
 		toast(toastSuccess(null, t("Music will start in a moment")));
@@ -60,8 +61,10 @@ const useMusicPlayer = () => {
 		toast(toastSuccess(null, t("Music stoped")));
 	};
 	function handleSongEnd(){
-		console.log("End")
-		musicIndex = musicIndex > musicList.length ? 0 : musicIndex + 1;
+		console.log("End");
+		// musicIndex = musicIndex > musicList.length ? 0 : musicIndex + 1;
+		musicIndex = Math.random() * musicList.length - 1;
+		// toast(toastSuccess(null, t("Changing to : ") + musicIndex))
 		console.log(musicIndex);
 		play();
 	};
