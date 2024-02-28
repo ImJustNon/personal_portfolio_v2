@@ -95,6 +95,22 @@ function Controller(){
                 } 
             />
             <Route 
+                path={'/:language/gallery'} 
+                element={
+                    <AppLayout>
+                        <ProjectsDetails />
+                    </AppLayout>
+                } 
+            />
+            <Route 
+                path={'/:language/gallery/:id'} 
+                element={
+                    <AppLayout>
+                        <ProjectsDetails />
+                    </AppLayout>
+                } 
+            />
+            <Route 
                 path={'/:language/socials'} 
                 element={
                     <AppLayout>

@@ -20,26 +20,7 @@ function Projects({ language }){
                 </div>
 
 
-                <Fancybox options={options} >
-                    <div className="grid grid-cols-4 w-5/6 mx-auto gap-5">
-                        <a data-fancybox="lnwza" data-caption={"asdasdasdasd"} href="https://lipsum.app/id/60/1600x1200">
-                            <img src="https://lipsum.app/id/60/200x150" width="200" height="150" />
-                        </a>
-                        <a data-fancybox="gallery" href="https://lipsum.app/id/61/1600x1200">
-                            <img src="https://lipsum.app/id/61/200x150" width="200" height="150" />
-                        </a>
-                        <a data-fancybox="gallery" href="https://lipsum.app/id/62/1600x1200">
-                            <img src="https://lipsum.app/id/62/200x150" width="200" height="150" />
-                        </a>
-                        <a data-fancybox="gallery" href="https://lipsum.app/id/63/1600x1200">
-                            <img src="https://lipsum.app/id/63/200x150" width="200" height="150" />
-                        </a>
-                        <a data-fancybox="gallery" href="https://lipsum.app/id/64/1600x1200">
-                            <img src="https://lipsum.app/id/64/200x150" width="200" height="150" />
-                        </a>
-                    </div>
-                    
-                </Fancybox>
+                
             </div>
         </>
     );

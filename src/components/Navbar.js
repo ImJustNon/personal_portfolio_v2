@@ -86,6 +86,13 @@ function Navbar({language}){
                                 {t("Projects")}
                             </Link>
                             <Link 
+                                to={`/${language}/gallery`} 
+                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/gallery") ? "btn-active" : ""}`} 
+                            >
+                                <i className="fa-regular fa-image"></i>
+                                {t("Gallery")}
+                            </Link>
+                            <Link 
                                 to={`/${language}/socials`} 
                                 className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/socials") ? "btn-active" : ""}`} 
                             >
@@ -239,6 +246,16 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                     <div className="col-span-2 text-left">
                                         {t("Projects")}
+                                    </div>
+                                </div>
+                            </Link>
+                            <Link to={`/${language}/gallery`} className="btn btn-md btn-neutral w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full">
+                                    <div className="text-center">
+                                        <i className="fa-regular fa-image"></i>
+                                    </div>
+                                    <div className="col-span-2 text-left">
+                                        {t("Gallery")}
                                     </div>
                                 </div>
                             </Link>

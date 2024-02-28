@@ -79,9 +79,10 @@ function SettingsDrawer(props){
         handleSearch("");
     }
     function handleSearch(value){
-        setSearchQuery(value);
+        const lowerCaseValue = value.toLowerCase();
+        setSearchQuery(lowerCaseValue);
 
-        const query = value;
+        const query = lowerCaseValue;
         const childrenElementsIdName = [];
         const getSettingsFieldElement = document.getElementById("settings_field");
         const getChildElements = getSettingsFieldElement.children;
@@ -124,7 +125,7 @@ function SettingsDrawer(props){
                     <div className="flex flex-col w-full">
                         <div className="grid grid-cols-5 gap-x-2 text-center">
                             <div className="col-span-4">
-                                <input id="search_input" type="text" placeholder={t("Type here...")} className="input input-bordered input-sm w-full" onChange={(event) => handleSearch(event.target.value)} />
+                                <input id="search_input" type="text" placeholder={t("Type here...")} className="input input-bordered input-sm w-full" onChange={(event) => handleSearch((event.target.value))} />
                             </div>
                             <div>
                                 <button className="btn btn-sm btn-neutral font-light" onClick={(event) => handleClearSearch(event)}>
