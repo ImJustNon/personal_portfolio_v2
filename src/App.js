@@ -10,6 +10,7 @@ import { ComponentStyleConfig, CSSReset } from '@chakra-ui/react';
 import useParticles from "./components/Particles";
 import useMusicPlayer from './components/Howler';
 import { useEffect } from 'react';
+import NameModal from './components/NameModal';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   	return (
 		<>
 			<ChakraProvider>
+				<NameModal />
 				<div className='set-bg'></div>
 				<particles.Component />
 				<Controller />

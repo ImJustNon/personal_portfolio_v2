@@ -7,6 +7,7 @@ import { notfoundTranslation } from "./notfound/data";
 import { activitiesTranslation } from "./activities/data";
 import { personalHistoryTranslation } from "./personal_history/data";
 import { certificatesTranslation } from "./certificates/data";
+import { nameModalTranslation } from "./namemodal/data";
 
 export const resources = {
     en: {
@@ -20,6 +21,7 @@ export const resources = {
             ...activitiesTranslation.en,
             ...personalHistoryTranslation.en,
             ...certificatesTranslation.en,
+            ...nameModalTranslation.en
         }
     },
     th: {
@@ -33,6 +35,7 @@ export const resources = {
             ...activitiesTranslation.th,
             ...personalHistoryTranslation.th,
             ...certificatesTranslation.th,
+            ...nameModalTranslation.th
         }
     }
 };
