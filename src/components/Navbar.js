@@ -43,7 +43,7 @@ function Navbar({language}){
 
     return(
         <>
-            <div className="navbar fixed text-black z-10 bg-slate-200 bg-opacity-10 shadow-lg" >
+            <div className="navbar fixed text-black z-10 bg-opacity-10 backdrop-blur-md shadow-xl" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
                         <Link to={`/${language}`} className="text-xl ml-5 font-bold">{t("<NOr._Nor/>")}</Link>

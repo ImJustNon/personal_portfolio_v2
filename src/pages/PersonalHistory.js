@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { config } from "../config/config";
 import axios from "axios";
-import profilePicture from "../assets/images/profile.jpg";
+import profilePicture from "../assets/images/1709135507f173.jpg";
 import { useTranslation } from "react-i18next";
 
 function PersonalHistory({ language }){
@@ -51,7 +51,7 @@ function PersonalHistory({ language }){
                         <div className="row-span-3 hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 mb-5 md:max-w-xl">    
                             <div className='text-black h-full w-full'>
                                 <div className="w-48 mx-auto mb-10">
-                                    <img className="mx-auto rounded-full border-solid border-white border-8" src={profilePicture} alt="Profile_pic" />
+                                    <img className="mx-auto rounded-full border-solid border-white border-8 aspect-square" src={profilePicture} alt="Profile_pic" />
                                 </div>
                                 <h1 className='text-2xl text-center font-bold mb-8'>
                                     {t("My Information")}
