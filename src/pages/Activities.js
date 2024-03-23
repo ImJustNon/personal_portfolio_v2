@@ -14,7 +14,8 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Image, Heading, Text, Di
 import { config } from "../config/config";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Activities({ language }){
 
@@ -109,7 +110,7 @@ function Activities({ language }){
                         {activitiesData_VocationalCertificate.map((data, i) =>(
                             <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.api.v2.name)}>
                                 <figure>
-                                    <img src={data.api.img} alt={`activity_img_${i}`} />
+                                    <LazyLoadImage effect='blur' src={data.api.img} alt={`activity_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
                                     <h2 className="card-title mx-auto text-center font-medium text-lg">
@@ -138,7 +139,7 @@ function Activities({ language }){
                         {activitiesData_VocationalCertificate_2.map((data, i) =>(
                             <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.api.v2.name)}>
                                 <figure>
-                                    <img src={data.api.img} alt={`activity_img_${i}`} />
+                                    <LazyLoadImage effect='blur' src={data.api.img} alt={`activity_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
                                     <h2 className="card-title mx-auto text-center font-medium text-lg">

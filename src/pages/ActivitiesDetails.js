@@ -15,6 +15,10 @@ import 'swiper/css/pagination';
 
 import "../styles/SwiperActivityDetailsStyle.css";
 
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
+
 function ActivitiesDetails(){
     const { id } = useParams();
     const navigate = useNavigate();
@@ -86,7 +90,7 @@ function ActivitiesDetails(){
                             >
                                 {activityDetailsData[0].api.v2.photos.map((img, i) =>(
                                     <SwiperSlide key={i}>
-                                        <Image src={img} />
+                                        <LazyLoadImage src={img} />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>

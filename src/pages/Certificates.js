@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { config } from "../config/config";
 import Fancybox from "../utilities/fancybox_wrapper";
 import { options } from "../config/fancybox_options";
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Certificates({ language }){
 
@@ -46,7 +48,7 @@ function Certificates({ language }){
                                 <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
                                     <figure>
                                         <a data-fancybox="certificate_mid" data-caption={data.title.join(" ")} href={data.api.img} >
-                                            <img src={data.api.img} alt={`activity_img_${i}`} />
+                                            <LazyLoadImage effect="blur" src={data.api.img} alt={`activity_img_${i}`} />
                                         </a>
                                     </figure>
                                     <div className="card-body">
