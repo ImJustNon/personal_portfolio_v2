@@ -85,7 +85,9 @@ function ActivitiesDetails(){
                                     delay: 1500,
                                     disableOnInteraction: false,
                                 }}
-                                pagination={true}
+                                pagination={{
+                                    dynamicBullets: true
+                                }}
                                 modules={[EffectCoverflow, Pagination, Autoplay]}
                             >
                                 {activityDetailsData[0].api.v2.photos.map((img, i) =>(
