@@ -29,10 +29,10 @@ function Activities({ language }){
     useEffect(() =>{
         fetch(`https://me.nonlnwza.xyz/api/get/activity?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
             console.log(response);
-            setActivitiesData_Banners(response.data.banner);
-            setActivitiesData_Banners_V2(response.data.banners_v2);
-            setActivitiesData_VocationalCertificate(response.data.voc_cert);
-            setActivitiesData_VocationalCertificate_2(response.data.voc_cert_2);
+            setActivitiesData_Banners(response.data.banner ?? []);
+            setActivitiesData_Banners_V2(response.data.banners_v2  ?? []);
+            setActivitiesData_VocationalCertificate(response.data.voc_cert  ?? []);
+            setActivitiesData_VocationalCertificate_2(response.data.voc_cert_2  ?? []);
         }).catch(e => console.log(e));
     }, []);
 
