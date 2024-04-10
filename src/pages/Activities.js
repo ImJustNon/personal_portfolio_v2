@@ -62,6 +62,7 @@ function Activities({ language }){
                     centeredSlides={true}
                     slidesPerView={'auto'}
                     navigation={false}
+                    // loop={true}
                     coverflowEffect={{
                         rotate: 50,
                         stretch: 0,
@@ -70,10 +71,12 @@ function Activities({ language }){
                         slideShadows: false,
                     }}
                     autoplay={{
-                        delay: 1500,
+                        delay: 1200,
                         disableOnInteraction: false,
                     }}
-                    pagination={true}
+                    pagination={{
+                        dynamicBullets: true,
+                    }}
                     modules={[Autoplay, EffectCoverflow, Pagination]}
                 >
                     {activitiesData_Banners_V2.map((bannerInfo, i) =>(
