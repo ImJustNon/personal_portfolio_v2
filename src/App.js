@@ -11,6 +11,7 @@ import useParticles from "./components/Particles";
 import useMusicPlayer from './components/Howler';
 import { useEffect } from 'react';
 import NameModal from './components/NameModal';
+import Background from './components/Background';
 
 function App() {
 
@@ -19,9 +20,11 @@ function App() {
 		<>
 			<ChakraProvider>
 				<NameModal />
-				<div className='set-bg'></div>
+				<Background />
 				<particles.Component />
-				<Controller />
+				<div className="relative">
+					<Controller />
+				</div>
 			</ChakraProvider>
 		</>
 	);
