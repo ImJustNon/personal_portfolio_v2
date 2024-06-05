@@ -12,7 +12,7 @@ function PersonalHistory({ language }){
     const [personalInfoMom, setPersonalInfoMom] = useState([]);
     const [personalInfoSchools, setPersonalInfoSchools] = useState([]);
     useEffect(() =>{
-        fetch(`https://me.nonlnwza.xyz/api/get/personal-info?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
+        fetch(`https://portfolio-proj-v1.vercel.app/api/get/personal-info?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
             // console.log(response);
             setPersonalInfoMyself(response.data.myself);
             setPersonalInfoDad(response.data.dad);

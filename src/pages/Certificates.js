@@ -13,7 +13,7 @@ function Certificates({ language }){
     const [certificateData_VocationalCertificate_2, setCertificateData_VocationalCertificate_2] = useState([]);
 
     useEffect(() =>{
-        fetch(`https://me.nonlnwza.xyz/api/get/certificate?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
+        fetch(`https://portfolio-proj-v1.vercel.app/api/get/certificate?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
             setCertificateData_MiddleSchool(response.data.middle_School);
             setCertificateData_VocationalCertificate(response.data.voc_cert);
             setCertificateData_VocationalCertificate_2(response.data.voc_cert_2);

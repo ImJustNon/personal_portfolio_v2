@@ -27,7 +27,7 @@ function Activities({ language }){
     const [activitiesData_VocationalCertificate_2, setActivitiesData_VocationalCertificate_2] = useState([]);
 
     useEffect(() =>{
-        fetch(`https://me.nonlnwza.xyz/api/get/activity?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
+        fetch(`https://portfolio-proj-v1.vercel.app/api/get/activity?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
             console.log(response);
             setActivitiesData_Banners(response.data.banner ?? []);
             setActivitiesData_Banners_V2(response.data.banners_v2  ?? []);

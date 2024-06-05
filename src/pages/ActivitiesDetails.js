@@ -30,7 +30,7 @@ function ActivitiesDetails(){
     const currentLanguage = i18n.language;
 
     useEffect(() =>{
-        fetch(`https://me.nonlnwza.xyz/api/v2/get/activity/details?key=${config.api.nonlnwzaPortfolio.key}&query=${id}`).then(response => response.json()).then(response =>{
+        fetch(`https://portfolio-proj-v1.vercel.app/api/v2/get/activity/details?key=${config.api.nonlnwzaPortfolio.key}&query=${id}`).then(response => response.json()).then(response =>{
             if(response.status === "FAIL" || response.data?.length === 0){
                 setActivityDetailsData(false);
                 document.title = "404: This page could not be found";
