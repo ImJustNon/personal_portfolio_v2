@@ -27,7 +27,7 @@ function Certificates({ language }){
         <>
             <div className='container mx-auto'>
                 <div className='mt-20 mx-auto'>
-                    <h1 className='text-center text-3xl font-semibold'>
+                    <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
                         {t("Certificates")}
                     </h1>
                 </div>
@@ -37,7 +37,7 @@ function Certificates({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-2xl font-semibold'>
+                        <h1 className='text-center text-[#c7ccd8] text-2xl font-semibold'>
                             {t("Grade 7 - Grade 9")}
                         </h1>
                     </div>
@@ -71,7 +71,7 @@ function Certificates({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-2xl font-semibold'>
+                        <h1 className='text-center text-[#c7ccd8] text-2xl font-semibold'>
                             {t("Vocational Certificate 1st Years")}
                         </h1>
                     </div>
@@ -105,7 +105,7 @@ function Certificates({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-2xl font-semibold'>
+                        <h1 className='text-center text-[#c7ccd8] text-2xl font-semibold'>
                             {t("Vocational Certificate 2st Years")}
                         </h1>
                     </div>

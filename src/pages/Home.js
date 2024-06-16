@@ -61,7 +61,7 @@ function Home({ language }){
 
                 <div className='mt-10 md:px-56'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-3xl text-white'>{t("About Me")}</h1>
+                        <h1 className='text-center text-3xl text-[#c7ccd8]'>{t("About Me")}</h1>
                     </div>
                     <div className="mt-5 mx-auto hero bg-white bg-opacity-40 rounded-2xl text-black py-8 px-8 w-96 md:text-start md:w-auto">
                         <div className='flex flex-col md:flex-row justify-around w-full'>

@@ -55,15 +55,15 @@ function ActivitiesDetails(){
                 (
                     <>
                         <div className='container mx-auto'>
-                            <div className='mt-10 flex gap-x-3 px-10 md:my-10 md:px-0 md:flex-row md:items-center'>
+                            <div className='mt-10 text-[#c7ccd8] flex gap-x-3 px-10 md:my-10 md:px-0 md:flex-row md:items-center'>
                                 <div>
                                     <ChevronLeftIcon
-                                        boxSize="24px"
+                                        boxSize="30px"
                                         cursor="pointer"
                                         onClick={() => handleGobackButton()}
                                     />
                                 </div>
-                                <div className='text-2xl w-2/3 md:text-3xl font-medium md:w-auto'>
+                                <div className='text-2xl text-[#c7ccd8] w-2/3 md:text-3xl font-medium md:w-auto'>
                                     {activityDetailsData[0].title.join(" ")}
                                 </div>
                             </div>
@@ -100,16 +100,17 @@ function ActivitiesDetails(){
 
                         <div className='container mx-auto'>
 
-                            <hr className='mt-14 mb-10'/>  
+                            <hr className='mt-14 mb-10 mx-48'/>  
                             
                             <div className='flex flex-col gap-y-5'>
                                 <div className='text-center'>
-                                    <h1 className='font-bold text-2xl'>
+                                    <h1 className='font-bold text-[#c7ccd8] text-2xl'>
                                         {t("Details")}
                                     </h1>
                                 </div>
                                 <div className='bg-white bg-opacity-40 rounded-2xl w-96 mx-auto p-5 md:w-full'>
                                     <div className='w-full flex flex-col text-center gap-y-5'>
+                                        {activityDetailsData[0].api.v2.details.length === 0 ? "Non Please add details" : ""}
                                         {activityDetailsData[0].api.v2.details.map((info, i) =>(
                                             <p key={i}>
                                                 {info}

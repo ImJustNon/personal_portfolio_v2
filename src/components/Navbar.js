@@ -43,7 +43,7 @@ function Navbar({language}){
 
     return(
         <>
-            <div className="navbar fixed text-black z-10 bg-opacity-10 backdrop-blur-md shadow-xl" >
+            <div className="navbar fixed text-[#c7ccd8] z-10 bg-opacity-10 backdrop-blur-md shadow-xl" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
                         <Link to={`/${language}`} className="text-xl ml-5 font-bold">{t("<NOr._Nor/>")}</Link>
@@ -52,55 +52,55 @@ function Navbar({language}){
                         <div className="menu menu-horizontal px-1 space-x-3">
                             <Link 
                                 to={`/${language}/`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.length <= 4 ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.length <= 4 ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-house"></i>
                                 {t("Home")}
                             </Link>
                             <Link 
                                 to={`/${language}/personal-history`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/personal-history") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/personal-history") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-folder"></i>
                                 {t("Personal History")}
                             </Link>
                             <Link 
                                 to={`/${language}/certificates`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/certificates") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/certificates") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-trophy"></i>
                                 {t("Certificates")}
                             </Link>
                             <Link 
                                 to={`/${language}/activities`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/activities") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/activities") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-medal"></i>
                                 {t("Activities")}
                             </Link>
                             <Link 
                                 to={`/${language}/projects`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/projects") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/projects") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-code"></i>
                                 {t("Projects")}
                             </Link>
                             <Link 
                                 to={`/${language}/gallery`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/gallery") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/gallery") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-regular fa-image"></i>
                                 {t("Gallery")}
                             </Link>
                             <Link 
                                 to={`/${language}/socials`} 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${pathname.includes("/socials") ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/socials") ? "btn-active" : ""}`} 
                             >
                                 <i className="fa-solid fa-share-from-square"></i>
                                 {t("Socials")}
                             </Link>
                             <button 
-                                className={`btn btn-sm font-normal btn-ghost text-black ${settingDrawerIsOpen ? "btn-active" : ""}`} 
+                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${settingDrawerIsOpen ? "btn-active" : ""}`} 
                                 onClick={settingDrawerOnOpen}
                             >
                                 <i className="fa-solid fa-gear"></i>
@@ -109,7 +109,7 @@ function Navbar({language}){
                     </div>
                     <div className="navbar-end text-end">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost text-black">
+                            <div tabIndex={0} role="button" className="btn btn-ghost text-[#c7ccd8]">
                                 {
                                     language === "en" ?
                                         <>

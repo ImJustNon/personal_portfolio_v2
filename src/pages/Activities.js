@@ -49,7 +49,7 @@ function Activities({ language }){
     return(
         <>
             <div className='mt-20 mx-auto'>
-                <h1 className='text-center text-3xl font-semibold'>
+                <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
                     {t("Activities")}
                 </h1>
             </div>
@@ -111,7 +111,7 @@ function Activities({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-3xl font-semibold'>
+                        <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
                             {t("Vocational Certificate 1st Years")}
                         </h1>
                     </div>
@@ -140,7 +140,7 @@ function Activities({ language }){
 
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
-                        <h1 className='text-center text-3xl font-semibold'>
+                        <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
                             {t("Vocational Certificate 2st Years")}
                         </h1>
                     </div>

@@ -27,7 +27,7 @@ function Socials({ language }){
         <>
             <div className='container mx-auto'>
                 <div className='mt-20 mx-auto'>
-                    <h1 className='text-center text-3xl font-semibold'>
+                    <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
                         {t("title_Socials")}
                     </h1>
                 </div>
