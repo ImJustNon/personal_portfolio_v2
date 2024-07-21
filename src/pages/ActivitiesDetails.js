@@ -30,14 +30,13 @@ function ActivitiesDetails(){
     const currentLanguage = i18n.language;
 
     useEffect(() =>{
-        fetch(`https://portfolio-proj-v1.vercel.app/api/v2/get/activity/details?key=${config.api.nonlnwzaPortfolio.key}&query=${id}`).then(response => response.json()).then(response =>{
+        fetch(`https://portfolio-api-service.vercel.app/api/v1/activities/byid/${id}`).then(response => response.json()).then(response =>{
             if(response.status === "FAIL" || response.data?.length === 0){
                 setActivityDetailsData(false);
                 document.title = "404: This page could not be found";
                 return;
             }
             setActivityDetailsData(response.data);
-            console.log(response);
         }).catch(e =>{
             setActivityDetailsData(false);
             document.title = "404: This page could not be found";
@@ -90,9 +89,9 @@ function ActivitiesDetails(){
                                 }}
                                 modules={[EffectCoverflow, Pagination, Autoplay]}
                             >
-                                {activityDetailsData[0].api.v2.photos.map((img, i) =>(
+                                {activityDetailsData[0].details.photos.map((img, i) =>(
                                     <SwiperSlide key={i}>
-                                        <LazyLoadImage src={img} />
+                                        <Image src={img} className='rounded-xl' />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -110,8 +109,8 @@ function ActivitiesDetails(){
                                 </div>
                                 <div className='bg-white bg-opacity-40 rounded-2xl w-96 mx-auto p-5 md:w-full'>
                                     <div className='w-full flex flex-col text-center gap-y-5'>
-                                        {activityDetailsData[0].api.v2.details.length === 0 ? "Non Please add details" : ""}
-                                        {activityDetailsData[0].api.v2.details.map((info, i) =>(
+                                        {activityDetailsData[0].details.length === 0 ? "Non Please add details" : ""}
+                                        {activityDetailsData[0].details.description.map((info, i) =>(
                                             <p key={i}>
                                                 {info}
                                             </p>

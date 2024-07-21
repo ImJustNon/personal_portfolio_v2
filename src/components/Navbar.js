@@ -86,13 +86,6 @@ function Navbar({language}){
                                 {t("Projects")}
                             </Link>
                             <Link 
-                                to={`/${language}/gallery`} 
-                                className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/gallery") ? "btn-active" : ""}`} 
-                            >
-                                <i className="fa-regular fa-image"></i>
-                                {t("Gallery")}
-                            </Link>
-                            <Link 
                                 to={`/${language}/socials`} 
                                 className={`btn btn-sm font-normal btn-ghost text-[#c7ccd8] ${pathname.includes("/socials") ? "btn-active" : ""}`} 
                             >

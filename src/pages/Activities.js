@@ -25,15 +25,27 @@ function Activities({ language }){
     const [activitiesData_Banners_V2, setActivitiesData_Banners_V2] = useState([]);
     const [activitiesData_VocationalCertificate, setActivitiesData_VocationalCertificate] = useState([]);
     const [activitiesData_VocationalCertificate_2, setActivitiesData_VocationalCertificate_2] = useState([]);
+    const [activitiesData_VocationalCertificate_3, setActivitiesData_VocationalCertificate_3] = useState([]);
+
+    // useEffect(() =>{
+    //     fetch(`https://portfolio-proj-v1.vercel.app/api/get/activity?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
+    //         console.log(response);
+    //         setActivitiesData_Banners(response.data.banner ?? []);
+    //         setActivitiesData_Banners_V2(response.data.banners_v2  ?? []);
+    //         setActivitiesData_VocationalCertificate(response.data.voc_cert  ?? []);
+    //         setActivitiesData_VocationalCertificate_2(response.data.voc_cert_2  ?? []);
+    //     }).catch(e => console.log(e));
+    // }, []);
 
     useEffect(() =>{
-        fetch(`https://portfolio-proj-v1.vercel.app/api/get/activity?key=${config.api.nonlnwzaPortfolio.key}`).then(response => response.json()).then(response =>{
-            console.log(response);
-            setActivitiesData_Banners(response.data.banner ?? []);
-            setActivitiesData_Banners_V2(response.data.banners_v2  ?? []);
-            setActivitiesData_VocationalCertificate(response.data.voc_cert  ?? []);
-            setActivitiesData_VocationalCertificate_2(response.data.voc_cert_2  ?? []);
-        }).catch(e => console.log(e));
+        fetch("https://portfolio-api-service.vercel.app/api/v1/activities/all").then(response => response.json()).then(response =>{
+            setActivitiesData_VocationalCertificate(response.data.vocational_certificate_1st_year ?? []);
+            setActivitiesData_VocationalCertificate_2(response.data.vocational_certificate_2nd_year ?? []);
+            setActivitiesData_VocationalCertificate_3(response.data.vocational_certificate_3rd_year ?? []);
+        });
+        fetch("https://portfolio-api-service.vercel.app/api/v1/activities/banners/all").then(response => response.json()).then(response =>{
+            setActivitiesData_Banners_V2(response.data.v2  ?? []);
+        });
     }, []);
 
 
@@ -112,44 +124,15 @@ function Activities({ language }){
                 <div className='mt-10 mx-auto w-96 md:w-full'>
                     <div className='mx-auto'>
                         <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
-                            {t("Vocational Certificate 1st Years")}
+                            {t("Vocational Certificate 3rd Years")}
                         </h1>
                     </div>
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
-                        {activitiesData_VocationalCertificate.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.api.v2.name)}>
+                        {activitiesData_VocationalCertificate_3.map((data, i) =>(
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
                                 <figure>
-                                    <LazyLoadImage effect='blur' src={data.api.img} alt={`activity_img_${i}`} />
-                                </figure>
-                                <div className="card-body">
-                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
-                                        {data.title.join(" ")}
-                                    </h2>
-                                    <p className='text-center mx-auto font-thin text-md'>
-                                        {data.description.join(" ")}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-
-                    </div>
-                </div>
-
-                <hr className='my-10 w-96 mx-auto' />
-
-                <div className='mt-10 mx-auto w-96 md:w-full'>
-                    <div className='mx-auto'>
-                        <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
-                            {t("Vocational Certificate 2st Years")}
-                        </h1>
-                    </div>
-                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
-
-                        {activitiesData_VocationalCertificate_2.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.api.v2.name)}>
-                                <figure>
-                                    <LazyLoadImage effect='blur' src={data.api.img} alt={`activity_img_${i}`} />
+                                    <LazyLoadImage effect='blur' src={data.img} alt={`activity_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
                                     <h2 className="card-title mx-auto text-center font-medium text-lg">
@@ -164,6 +147,70 @@ function Activities({ language }){
                                             <button className="btn btn-primary btn-sm">Buy Now</button>
                                         </div>
                                     </div> */}
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+
+                <hr className='my-10 w-96 mx-auto' />
+
+                <div className='mt-10 mx-auto w-96 md:w-full'>
+                    <div className='mx-auto'>
+                        <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
+                            {t("Vocational Certificate 2nd Years")}
+                        </h1>
+                    </div>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+
+                        {activitiesData_VocationalCertificate_2.map((data, i) =>(
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
+                                <figure>
+                                    <LazyLoadImage effect='blur' src={data.img} alt={`activity_img_${i}`} />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                        {data.title.join(" ")}
+                                    </h2>
+                                    <p className='text-center mx-auto font-thin text-md'>
+                                        {data.description.join(" ")}
+                                    </p>
+                                    {/* <div className="card-actions mt-2">
+                                        <div className='flex justify-center w-full gap-x-5'>
+                                            <button className="btn btn-primary btn-sm">Buy Now</button>
+                                            <button className="btn btn-primary btn-sm">Buy Now</button>
+                                        </div>
+                                    </div> */}
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+
+                <hr className='my-10 w-96 mx-auto' />
+
+                <div className='mt-10 mx-auto w-96 md:w-full'>
+                    <div className='mx-auto'>
+                        <h1 className='text-center text-[#c7ccd8] text-3xl font-semibold'>
+                            {t("Vocational Certificate 1st Years")}
+                        </h1>
+                    </div>
+                    <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
+
+                        {activitiesData_VocationalCertificate.map((data, i) =>(
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
+                                <figure>
+                                    <LazyLoadImage effect='blur' src={data.img} alt={`activity_img_${i}`} />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title mx-auto text-center font-medium text-lg">
+                                        {data.title.join(" ")}
+                                    </h2>
+                                    <p className='text-center mx-auto font-thin text-md'>
+                                        {data.description.join(" ")}
+                                    </p>
                                 </div>
                             </div>
                         ))}
