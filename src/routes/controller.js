@@ -71,7 +71,7 @@ function Controller(){
                 } 
             />
             <Route 
-                path={'/:language/activities/:id'} 
+                path={'/:language/activity/:id'} 
                 element={
                     <AppLayout>
                         <ActivitiesDetails />
@@ -87,7 +87,7 @@ function Controller(){
                 } 
             />
             <Route 
-                path={'/:language/projects/:id'} 
+                path={'/:language/project/:id'} 
                 element={
                     <AppLayout>
                         <ProjectsDetails />

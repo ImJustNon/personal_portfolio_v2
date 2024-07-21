@@ -16,7 +16,6 @@ function Projects({ language }){
 
     useEffect(() =>{
         fetch("https://portfolio-api-service.vercel.app/api/v1/projects/all").then(response => response.json()).then(response =>{
-            console.log(response);
             setProjectsData_M3(response.data.proj_m_3);
             setProjectsData_VocationalCertificate(response.data.vocational_certificate_1st_year);
             setProjectsData_VocationalCertificate_2(response.data.vocational_certificate_2nd_year);
@@ -30,6 +29,49 @@ function Projects({ language }){
 
     function handleNavigateDetails(id){
         navigate(`/${currentLanguage}/project/${id}`);
+    }
+
+    function levenshtein(a, b) {
+        const matrix = [];
+        for (let i = 0; i <= b.length; i++) {
+            matrix[i] = [i];
+        }
+        for (let j = 0; j <= a.length; j++) {
+            matrix[0][j] = j;
+        }
+        for (let i = 1; i <= b.length; i++) {
+            for (let j = 1; j <= a.length; j++) {
+                if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                } else {
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j - 1] + 1, 
+                        matrix[i][j - 1] + 1,     
+                        matrix[i - 1][j] + 1     
+                    );
+                }
+            }
+        }
+        return matrix[b.length][a.length];
+    }
+    function findMostSimilarKey(obj, targetKey) {
+        let closestKey = null;
+        let smallestDistance = Infinity;
+        for (const key in obj) {
+            const distance = levenshtein(key, targetKey);
+            if (distance < smallestDistance) {
+                smallestDistance = distance;
+                closestKey = key;
+            }
+        }
+        return closestKey;
+    }
+
+    const pickIcon = {
+        "Github": "fa-brands fa-github",
+        "Frontend": "fa-brands fa-github",
+        "Backend": "fa-brands fa-github",
+        "Preview": "fa-solid fa-up-right-from-square",
     }
 
     return(
@@ -58,8 +100,8 @@ function Projects({ language }){
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {ProjectsData_VocationalCertificate_3.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
-                                <figure>
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure className="cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
                                     <LazyLoadImage effect='blur' src={data.img} alt={`project_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
@@ -69,12 +111,11 @@ function Projects({ language }){
                                     <p className='text-center mx-auto font-thin text-md'>
                                         {data.description.join(" ")}
                                     </p>
-                                    {/* <div className="card-actions mt-2">
-                                        <div className='flex justify-center w-full gap-x-5'>
-                                            <button className="btn btn-primary btn-sm">Buy Now</button>
-                                            <button className="btn btn-primary btn-sm">Buy Now</button>
-                                        </div>
-                                    </div> */}
+                                    <div className="flex flex-row mt-3 justify-center gap-5 flex-wrap">
+                                        {data.links.map((btn, i) =>(
+                                            <div className="cursor-pointer px-3 py-2 rounded-lg bg-[#c4c4c4] text-black hover:bg-[#9e9e9e] active:bg-[#8a8a8a] duration-300" onClick={() => window.open(btn.url)}><i className={`${pickIcon[findMostSimilarKey(pickIcon, btn.name)]} mr-1`}></i> {btn.name}</div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -93,8 +134,8 @@ function Projects({ language }){
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {ProjectsData_VocationalCertificate_2.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
-                                <figure>
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure className="cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
                                     <LazyLoadImage effect='blur' src={data.img} alt={`project_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
@@ -104,12 +145,11 @@ function Projects({ language }){
                                     <p className='text-center mx-auto font-thin text-md'>
                                         {data.description.join(" ")}
                                     </p>
-                                    {/* <div className="card-actions mt-2">
-                                        <div className='flex justify-center w-full gap-x-5'>
-                                            <button className="btn btn-primary btn-sm">Buy Now</button>
-                                            <button className="btn btn-primary btn-sm">Buy Now</button>
-                                        </div>
-                                    </div> */}
+                                    <div className="flex flex-row mt-3 justify-center gap-5 flex-wrap">
+                                        {data.links.map((btn, i) =>(
+                                            <div className="cursor-pointer px-3 py-2 rounded-lg bg-[#c4c4c4] text-black hover:bg-[#9e9e9e] active:bg-[#8a8a8a] duration-300" onClick={() => window.open(btn.url)}><i className={`${pickIcon[findMostSimilarKey(pickIcon, btn.name)]} mr-1`}></i> {btn.name}</div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -128,8 +168,8 @@ function Projects({ language }){
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {ProjectsData_VocationalCertificate.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
-                                <figure>
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure className="cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
                                     <LazyLoadImage effect='blur' src={data.img} alt={`project_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
@@ -139,6 +179,11 @@ function Projects({ language }){
                                     <p className='text-center mx-auto font-thin text-md'>
                                         {data.description.join(" ")}
                                     </p>
+                                    <div className="flex flex-row mt-3 justify-center gap-5 flex-wrap">
+                                        {data.links.map((btn, i) =>(
+                                            <div className="cursor-pointer px-3 py-2 rounded-lg bg-[#c4c4c4] text-black hover:bg-[#9e9e9e] active:bg-[#8a8a8a] duration-300" onClick={() => window.open(btn.url)}><i className={`${pickIcon[findMostSimilarKey(pickIcon, btn.name)]} mr-1`}></i> {btn.name}</div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -157,8 +202,8 @@ function Projects({ language }){
                     <div className='grid grid-cols-1 gap-10 w-80 mt-10 mx-auto justify-items-start md:grid-cols-2 md:w-full xl:grid-cols-4'>
 
                         {ProjectsData_M3.map((data, i) =>(
-                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
-                                <figure>
+                            <div key={i} className="card card-compact bg-base-100 shadow-2xl h-fit">
+                                <figure className="cursor-pointer" onClick={() => handleNavigateDetails(data.id)}>
                                     <LazyLoadImage effect='blur' src={data.img} alt={`project_img_${i}`} />
                                 </figure>
                                 <div className="card-body">
@@ -168,6 +213,11 @@ function Projects({ language }){
                                     <p className='text-center mx-auto font-thin text-md'>
                                         {data.description.join(" ")}
                                     </p>
+                                    <div className="flex flex-row mt-3 justify-center gap-5 flex-wrap">
+                                        {data.links.map((btn, i) =>(
+                                            <div className="cursor-pointer px-3 py-2 rounded-lg bg-[#c4c4c4] text-black hover:bg-[#9e9e9e] active:bg-[#8a8a8a] duration-300" onClick={() => window.open(btn.url)}><i className={`${pickIcon[findMostSimilarKey(pickIcon, btn.name)]} mr-1`}></i> {btn.name}</div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}

@@ -55,7 +55,7 @@ function Activities({ language }){
 
 
     function handleNavigateDetails(id){
-        navigate(`/${currentLanguage}/activities/${id}`);
+        navigate(`/${currentLanguage}/activity/${id}`);
     }
 
     return(
