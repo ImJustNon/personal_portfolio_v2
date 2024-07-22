@@ -32,6 +32,7 @@ const useMusicPlayer = () => {
 		const sound = new Howl({
 			src: [musicList[musicIndex]],
 			autoplay: false,
+			html5: true,
 			loop: false,
 			onend: handleSongEnd,
 		});
