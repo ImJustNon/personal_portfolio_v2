@@ -34,16 +34,16 @@ function AppLayout({ children }){
                     animate="animateState"
                     exit="exitState"
                     transition={{
-                        duration: 0.3,
+                        duration: 0.5,
                     }}
                     variants={{
                         initialState: {
                             opacity: 0, 
-                            transform: "translateY(100px)",
+                            // transform: "translateY(15px)",
                         },
                         animateState: {
                             opacity: 1, 
-                            transform: 0,
+                            transform: 0.5,
                         },
                         exitState: {},
                     }}
