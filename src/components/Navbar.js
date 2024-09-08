@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import SettingsDrawer from "./SettingsDrawer";
 
+
 function Navbar({language}){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -43,7 +44,7 @@ function Navbar({language}){
 
     return(
         <>
-            <div className="navbar fixed text-[#c7ccd8] z-10 bg-opacity-10 backdrop-blur-md shadow-xl" >
+            <div className="navbar text-[#c7ccd8] z-10 bg-opacity-10 backdrop-blur-md shadow-xl" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
                         <Link to={`/${language}`} className="text-xl ml-5 font-bold">{t("<NOr._Nor/>")}</Link>

@@ -8,6 +8,7 @@ import Footer from "../components/Footer"
 import useParticles from "../components/Particles";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import Headroom from "react-headroom";
 
 function AppLayout({ children }){
     const { language } = useParams();
@@ -23,8 +24,10 @@ function AppLayout({ children }){
     
     return(
         <>
-            <Navbar language={language} />
-
+            <Headroom>
+                <Navbar language={language} />
+            </Headroom>
+            
             <div className="pt-16"></div>
 
             <AnimatePresence wait>
