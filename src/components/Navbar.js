@@ -47,7 +47,7 @@ function Navbar({language}){
             <div className="navbar text-[#c7ccd8] z-10 bg-opacity-10 backdrop-blur-md shadow-xl" >
                 <div className="container mx-auto">
                     <div className="navbar-start">
-                        <Link to={`/${language}`} className="text-xl ml-5 font-bold">{t("<NOr._Nor/>")}</Link>
+                        <Link to={`/${language}`} className="text-xl ml-5 font-bold">{t("<NO_eNd/>")}</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <div className="menu menu-horizontal px-1 space-x-3">
