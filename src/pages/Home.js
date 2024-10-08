@@ -27,6 +27,23 @@ function Home({ language }){
 		});
 	}, []);
 
+    const [stackLanguage, setStackLanguage] = useState([]);
+    const [stackFramework, setStackFramework] = useState([]);
+
+    useEffect(() =>{
+        // language stacks
+        fetch("https://portfolio-api-service.vercel.app/api/v1/stacks/bycategory/languages").then(response => response.json()).then(response =>{
+            if(response.status === "OK"){
+                setStackLanguage(response.data);
+            }
+        }); 
+        fetch("https://portfolio-api-service.vercel.app/api/v1/stacks/bycategory/frameworks").then(response => response.json()).then(response =>{
+            if(response.status === "OK"){
+                setStackFramework(response.data);
+            }
+        });
+    }, []);
+
     return (
         <>
             <div className='container mx-auto'>
@@ -59,7 +76,7 @@ function Home({ language }){
                     </div>
                 </div>
 
-                <div className='mt-10 md:px-56'>
+                <div className='mt-10 md:px-20'>
                     <div className='mx-auto'>
                         <h1 className='text-center text-3xl text-[#c7ccd8]'>{t("About Me")}</h1>
                     </div>
@@ -95,8 +112,32 @@ function Home({ language }){
                 </div>
             </div>
 
-            <div className='mt-10 px-56'>
-            
+            <div className='mt-10 md:px-56'>   
+                <div className='mx-auto'>
+                    <h1 className='text-center text-3xl text-[#c7ccd8]'>{t("My Stacks")}</h1>
+                </div>
+                <div className='mt-5 px-3 grid grid-cols-1 md:grid-cols-2 justify-center gap-5 md:gap-20'>
+                    <div className='col-span-1 flex flex-col'>
+                        <div className='text-center text-xl text-[#c7ccd8] mb-7'>
+                            Languages
+                        </div>
+                        <div className='flex flex-row justify-center gap-5 flex-wrap'>
+                            {stackLanguage.map((stack, i) =>(
+                                <img src={stack.img} key={i} alt={stack.name} className='cursor-pointer hover:scale-125 duration-300' />
+                            ))}
+                        </div>
+                    </div>
+                    <div className='col-span-1 flex flex-col'>
+                        <div className='text-center text-xl text-[#c7ccd8] mb-7'>
+                            Frameworks & Programs
+                        </div>
+                        <div className='flex flex-row justify-center gap-5 flex-wrap'>
+                            {stackFramework.map((stack, i) =>(
+                                <img src={stack.img} key={i} alt={stack.name} className='cursor-pointer hover:scale-125 duration-300' />
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </>

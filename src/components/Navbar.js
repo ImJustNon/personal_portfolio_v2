@@ -180,11 +180,11 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                 isFullHeight={false}
             >
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent bgColor={"rgba(255, 255, 255, 0.2)"} backdropFilter={"blur(6px)"}>
                     
                     <DrawerHeader>
                         <div className="text-left flex flex-row justify-around">
-                            <div className="text-2xl">
+                            <div className="text-2xl text-white">
                                 {t("< Where Would You Like To Go? />")} 
                             </div>
                         </div>
@@ -193,8 +193,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                     <DrawerBody>
                         <div className="px-5 space-y-1">
 
-                            <Link to={`/${language}/`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-solid fa-house"></i>
                                     </div>
@@ -203,8 +203,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                 </div>
                             </Link>
-                            <Link to={`/${language}/personal-history`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/personal-history`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-solid fa-folder"></i>
                                     </div>
@@ -213,8 +213,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                 </div>
                             </Link>
-                            <Link to={`/${language}/certificates`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/certificates`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-solid fa-trophy"></i>
                                     </div>
@@ -223,8 +223,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                 </div>
                             </Link>
-                            <Link to={`/${language}/activities`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/activities`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-solid fa-medal"></i>
                                     </div>
@@ -233,8 +233,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                 </div>
                             </Link>
-                            <Link to={`/${language}/projects`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/projects`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-solid fa-code"></i>
                                     </div>
@@ -243,8 +243,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                 </div>
                             </Link>
-                            <Link to={`/${language}/gallery`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/gallery`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-regular fa-image"></i>
                                     </div>
@@ -253,8 +253,8 @@ function MobileDrawer({isOpen, onClose, onOpen, language, settingDrawerOnOpen}) 
                                     </div>
                                 </div>
                             </Link>
-                            <Link to={`/${language}/socials`} className="btn btn-md btn-neutral w-full">
-                                <div className="grid grid-cols-3 gap-4 w-full">
+                            <Link to={`/${language}/socials`} className="btn btn-md w-full">
+                                <div className="grid grid-cols-3 gap-4 w-full text-neutral text-lg">
                                     <div className="text-center">
                                         <i className="fa-solid fa-share-from-square"></i>
                                     </div>
