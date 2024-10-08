@@ -1,6 +1,6 @@
 export const homeTranslation = {
     en: {
-        "box_1_title": "I call myself a Dev. But I hate code. LOL.",
+        "box_1_title": "My dream is to hack NASA using HTML",
         "box_1_description": "Currently studying at the Vocational Certificate at the Science-Based Technology Vocational College (Chonburi). Information Technology branch.",
         "About Me": "About Me",
         "Dev. Stacks": "Dev. Stacks",
@@ -17,7 +17,7 @@ export const homeTranslation = {
         "Fav Anime": "Fav Anime : 86, Spy X Family, Bloom into You, YourName ETC.",
     },
     th: {
-        "box_1_title": "ผมเรียกตัวเองว่า Dev. เเต่ผมขี้เกียจโค้ด 5555+",
+        "box_1_title": "ความฝันผมคือการเเฮกนาซ่าด้วย HTML",
         "box_1_description": "ตอนนี้กำลังศึกษาอยู่ที่ วิทยาลัยอาชีวศึกษาเทคโนโลยีฐานวิทยาศาสตร์(ชลบุรี) สาขา เทคโนโลยีสารสนเทศ ครับ",
         "About Me": "เกี่ยวกับฉัน",
         "Dev. Stacks": "ความสามารถ",

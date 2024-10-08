@@ -71,8 +71,8 @@ function Home({ language }){
                                     | {t("Dev. Stacks")}
                                 </h1>
                                 <ul className='space-y-1'>
-                                    <li className="py-2 text-sm font-thin">▪ {t("Programming languages")} : JavaScript, HTML, CSS, SQL, JSX, Python, C++, EJS </li>
-                                    <li className="py-2 text-sm font-thin">▪ {t("Frameworks")} : Express.js, React.js, Node.js, Discord.js, Bootstrap, TailwindCSS</li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Programming languages")} : JavaScript, TypeScript, HTML, CSS, SQL, JSX, Python, C++, EJS </li>
+                                    <li className="py-2 text-sm font-thin">▪ {t("Frameworks")} : ExpressJS, ReactJS, NodeJS, DiscordJS, Bootstrap, TailwindCSS</li>
                                     <li className="py-2 text-sm font-thin">▪ {t("Tools")} : Git</li>
                                     <li className="py-2 text-sm font-thin">▪ {t("IDEs")} : Visual Studio Code</li>
                                     <li className="py-2 text-sm font-thin">▪ {t("Etc")} : null</li>
